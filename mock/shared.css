@@ -1,0 +1,36 @@
+/* Shared styles for all mock demo sites */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Demo badge — fixed bottom-right */
+.demo-badge {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 7px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+  transition: background 0.2s;
+  font-family: system-ui, sans-serif;
+}
+.demo-badge:hover { background: rgba(0, 0, 0, 0.92); }
+
+/* Back link used inside mock navs */
+.back-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.back-link:hover { opacity: 1; }

@@ -1,0 +1,124 @@
+:root {
+  --blue:   #0077b6;
+  --blue2:  #005f92;
+  --cyan:   #00b4d8;
+  --sky:    #caf0f8;
+  --light:  #f0f8ff;
+  --white:  #ffffff;
+  --text:   #0a2a3d;
+  --muted:  #5a7a8a;
+  --font-h: 'Nunito', system-ui, sans-serif;
+  --font-b: 'Inter', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: var(--light); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.label { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-bottom: 10px; }
+.section__header { text-align: center; max-width: 520px; margin: 0 auto 52px; }
+.section__header h2 { font-family: var(--font-h); font-size: 2.25rem; color: var(--text); font-weight: 900; margin-bottom: 10px; }
+.section__header p { color: var(--muted); font-size: 0.95rem; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--sky); }
+.nav__inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.logo { font-family: var(--font-h); font-size: 1.5rem; font-weight: 900; color: var(--blue); }
+.logo span { color: var(--cyan); }
+.nav__links { display: flex; gap: 28px; }
+.nav__links a { font-size: 0.875rem; font-weight: 600; color: var(--muted); transition: color 0.2s; }
+.nav__links a:hover { color: var(--blue); }
+.back-link { color: var(--muted); }
+
+/* BUTTONS */
+.btn { display: inline-flex; align-items: center; padding: 13px 28px; font-weight: 700; font-size: 0.9rem; border: 2px solid transparent; border-radius: 100px; cursor: pointer; transition: all 0.2s; font-family: var(--font-b); }
+.btn--primary { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.btn--primary:hover { background: var(--blue2); border-color: var(--blue2); }
+.btn--outline { background: transparent; color: var(--blue); border-color: var(--blue); }
+.btn--outline:hover { background: var(--blue); color: var(--white); }
+.btn--sm { padding: 9px 18px; font-size: 0.825rem; }
+
+/* HERO */
+.hero {
+  min-height: 90vh;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+  background-image: linear-gradient(135deg, rgba(0,119,182,0.82) 0%, rgba(0,180,216,0.5) 55%, rgba(202,240,248,0.14) 100%), url("../../assets/images/carwash-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 100px 24px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero__inner { position: relative; z-index: 1; max-width: 700px; }
+.hero h1 { font-family: var(--font-h); font-size: clamp(2.75rem, 7vw, 5rem); font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: var(--sky); }
+.hero__sub { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+.hero__wave { position: absolute; bottom: 0; left: 0; right: 0; line-height: 0; }
+.hero__wave svg { width: 100%; height: 80px; }
+
+/* PACKAGES */
+.packages { background: var(--light); padding: 96px 0; }
+.packages__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+.package-card { background: var(--white); border: 2px solid var(--sky); border-radius: 16px; padding: 28px; transition: box-shadow 0.2s; position: relative; }
+.package-card:hover { box-shadow: 0 8px 32px rgba(0,119,182,0.12); }
+.package-card--featured { border-color: var(--blue); box-shadow: 0 8px 32px rgba(0,119,182,0.15); }
+.package-card__badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--blue); color: var(--white); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+.package-card__header { text-align: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--sky); }
+.package-card h3 { font-family: var(--font-h); font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.price { font-family: var(--font-h); font-size: 2.5rem; font-weight: 900; color: var(--blue); }
+.package-card__list { margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+.package-card__list li { font-size: 0.875rem; color: var(--text); }
+.package-card__list li.muted { color: #b0c0cc; }
+.package-card .btn { width: 100%; justify-content: center; }
+
+/* ABOUT */
+.about { background: var(--white); padding: 96px 0; }
+.about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about h2 { font-family: var(--font-h); font-size: 2.25rem; font-weight: 900; color: var(--text); margin-bottom: 16px; }
+.about p { color: var(--muted); margin-bottom: 28px; line-height: 1.75; }
+.about__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.stat { background: var(--light); border-radius: 12px; padding: 16px; text-align: center; }
+.stat strong { display: block; font-family: var(--font-h); font-size: 1.5rem; font-weight: 900; color: var(--blue); margin-bottom: 4px; }
+.stat span { font-size: 0.78rem; color: var(--muted); }
+.about__visual {
+  font-size: 0;
+  color: transparent;
+  text-align: center;
+  background-color: var(--sky);
+  background-image: linear-gradient(180deg, rgba(202,240,248,0.05), rgba(0,119,182,0.22)), url("../../assets/images/carwash-about.jpg");
+  border-radius: 24px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* CONTACT */
+.contact { background: var(--blue); padding: 80px 0; }
+.contact h2 { font-family: var(--font-h); font-size: 2.25rem; font-weight: 900; color: var(--white); margin-bottom: 32px; }
+.contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.contact__details { display: flex; flex-direction: column; gap: 20px; }
+.detail strong { display: block; font-size: 0.875rem; font-weight: 700; color: var(--sky); margin-bottom: 4px; }
+.detail p { color: rgba(255,255,255,0.8); font-size: 0.9rem; line-height: 1.6; }
+.note-box { background: rgba(255,255,255,0.12); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+.note-box h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.note-box p { font-size: 0.875rem; color: rgba(255,255,255,0.75); }
+.contact .btn--primary { background: var(--white); color: var(--blue); border-color: var(--white); }
+.contact .btn--primary:hover { background: var(--sky); border-color: var(--sky); }
+
+/* FOOTER */
+.footer { background: #002d4a; padding: 24px 0; text-align: center; }
+.footer p { font-size: 0.825rem; color: rgba(255,255,255,0.4); }
+.footer__sub { margin-top: 4px; font-size: 0.75rem !important; }
+
+@media (max-width: 768px) {
+  .packages__grid, .about__grid, .contact__grid { grid-template-columns: 1fr; }
+  .about__visual { display: none; }
+  .nav__links { display: none; }
+}

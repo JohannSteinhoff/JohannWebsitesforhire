@@ -6,7 +6,9 @@
   <title>Johann | Web Design · San Marcos, TX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" /></noscript>
+  <link rel="stylesheet" href="stock-images.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -21,7 +23,7 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#contact" class="nav__cta">Let's Talk</a></li>
       </ul>
-      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -182,36 +184,109 @@
     <div class="container">
       <div class="section__header">
         <span class="label">Work</span>
-        <h2>Recent projects</h2>
-        <p>A growing portfolio — check back as more projects go live.</p>
+        <h2>Demo projects</h2>
+        <p>Mock demos built to show range — each one a different business, different design. Click any to explore the full site.</p>
       </div>
       <div class="work__grid">
-        <div class="work-card work-card--placeholder">
-          <div class="work-card__img">
-            <div class="work-card__coming">Project Coming Soon</div>
+        <a href="mock/mechanic/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--mechanic">
+            <span class="work-card__emoji">🔧</span>
           </div>
           <div class="work-card__info">
-            <h3>Local Restaurant</h3>
-            <p>Menu, hours, online reservations, and a site that loads fast on mobile.</p>
-            <span class="tag">In Progress</span>
+            <span class="tag">Auto Shop</span>
+            <h3>TX Auto Works</h3>
+            <p>Industrial dark theme, service grid, and trust-building layout for a mechanic shop.</p>
+            <span class="work-card__cta-link">View Demo →</span>
           </div>
-        </div>
-        <div class="work-card work-card--placeholder">
-          <div class="work-card__img">
-            <div class="work-card__coming">Project Coming Soon</div>
+        </a>
+        <a href="mock/pizza/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--pizza">
+            <span class="work-card__emoji">🍕</span>
           </div>
           <div class="work-card__info">
-            <h3>Service Business</h3>
-            <p>Clean, credibility-building site for a local service provider.</p>
-            <span class="tag">In Progress</span>
+            <span class="tag">Restaurant</span>
+            <h3>Marco's Pizzeria</h3>
+            <p>Warm Italian design, full menu section, and a quote block that builds personality.</p>
+            <span class="work-card__cta-link">View Demo →</span>
           </div>
-        </div>
-        <div class="work-card work-card--cta">
-          <div class="work-card__cta-inner">
-            <p>Your business<br />could be here.</p>
-            <a href="#contact" class="btn btn--primary btn--sm">Let's build it</a>
+        </a>
+        <a href="mock/hotel/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--hotel">
+            <span class="work-card__emoji">🏨</span>
           </div>
-        </div>
+          <div class="work-card__info">
+            <span class="tag">Hotel</span>
+            <h3>Hill Country Inn</h3>
+            <p>Upscale boutique hotel with room listings, amenities, and an elegant serif palette.</p>
+            <span class="work-card__cta-link">View Demo →</span>
+          </div>
+        </a>
+        <a href="mock/carwash/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--carwash">
+            <span class="work-card__emoji">🚿</span>
+          </div>
+          <div class="work-card__info">
+            <span class="tag">Car Wash</span>
+            <h3>Shine &amp; Go</h3>
+            <p>Bright blue, pricing tiers, and a rain guarantee feature. Clean and trustworthy.</p>
+            <span class="work-card__cta-link">View Demo →</span>
+          </div>
+        </a>
+        <a href="mock/coffeeshop/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--coffee">
+            <span class="work-card__emoji">☕</span>
+          </div>
+          <div class="work-card__info">
+            <span class="tag">Café</span>
+            <h3>Morning Ritual Coffee</h3>
+            <p>Artisanal coffee shop with full menu, story section, and warm earthy tones.</p>
+            <span class="work-card__cta-link">View Demo →</span>
+          </div>
+        </a>
+        <a href="mock/salon/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--salon">
+            <span class="work-card__emoji">✂️</span>
+          </div>
+          <div class="work-card__info">
+            <span class="tag">Salon</span>
+            <h3>The Cut Co.</h3>
+            <p>Editorial black and blush pink design. Split-screen hero, services grid with pricing.</p>
+            <span class="work-card__cta-link">View Demo →</span>
+          </div>
+        </a>
+        <a href="mock/lawfirm/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--law">
+            <span class="work-card__emoji">⚖️</span>
+          </div>
+          <div class="work-card__info">
+            <span class="tag">Law Firm</span>
+            <h3>Hill &amp; Associates</h3>
+            <p>Navy and gold, trust-building trust bar, practice areas, and attorney profiles.</p>
+            <span class="work-card__cta-link">View Demo →</span>
+          </div>
+        </a>
+        <a href="mock/gym/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--gym">
+            <span class="work-card__emoji">💪</span>
+          </div>
+          <div class="work-card__info">
+            <span class="tag">Gym</span>
+            <h3>Iron Valley Fitness</h3>
+            <p>Near-black with electric yellow. Condensed type, class schedule, membership tiers.</p>
+            <span class="work-card__cta-link">View Demo →</span>
+          </div>
+        </a>
+        <a href="mock/racetrack/index.html" class="work-card work-card--link">
+          <div class="work-card__img work-card__img--race">
+            <span class="work-card__emoji">🏁</span>
+          </div>
+          <div class="work-card__info">
+            <span class="tag">Racetrack</span>
+            <h3>Lone Star Speedway</h3>
+            <p>High-drama racing aesthetic. Events list, ticket tiers, and a live ticker animation.</p>
+            <span class="work-card__cta-link">View Demo →</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>

@@ -1,0 +1,24 @@
+:root {
+  /* Main portfolio */
+  --stock-web: url("assets/images/web.jpg");
+
+  /* Demo categories */
+  --stock-mechanic: url("assets/images/mechanic.jpg");
+  --stock-pizza: url("assets/images/pizza.jpg");
+  --stock-hotel-exterior: url("assets/images/hotel-exterior.jpg");
+  --stock-hotel-standard: url("assets/images/hotel-standard.jpg");
+  --stock-hotel-suite: url("assets/images/hotel-suite.jpg");
+  --stock-hotel-view: url("assets/images/hotel-view.jpg");
+  --stock-salon: url("assets/images/salon.jpg");
+  --stock-coffee-hero: url("assets/images/coffee-hero.jpg");
+  --stock-coffee-about: url("assets/images/coffee-about.jpg");
+  --stock-carwash-hero: url("assets/images/carwash-hero.jpg");
+  --stock-carwash-about: url("assets/images/carwash-about.jpg");
+  --stock-gym: url("assets/images/gym.jpg");
+  --stock-law-hero: url("assets/images/law-hero.jpg");
+  --stock-law-david: url("assets/images/law-david.jpg");
+  --stock-law-sarah: url("assets/images/law-sarah.png");
+  --stock-law-james: url("assets/images/law-james.jpg");
+  --stock-race-hero: url("assets/images/race-hero.jpg");
+  --stock-race-track: url("assets/images/race-track.jpg");
+}
