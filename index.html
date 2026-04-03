@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johann | Web Design · San Marcos, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">Johann<span>.</span></a>
+      <ul class="nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact" class="nav__cta">Let's Talk</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Let's Talk</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__badge">Based in San Marcos, TX</div>
+      <h1 class="hero__headline">
+        Websites that work<br />
+        <em>as hard as you do.</em>
+      </h1>
+      <p class="hero__sub">
+        I build clean, fast, mobile-friendly websites for local businesses
+        in the San Marcos area — without the agency overhead.
+      </p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary">Start a Project</a>
+        <a href="#work" class="btn btn--ghost">See My Work</a>
+      </div>
+      <p class="hero__note">
+        Currently accepting new clients at <strong>introductory rates</strong> — limited spots available.
+      </p>
+    </div>
+    <div class="hero__visual">
+      <div class="browser-mock">
+        <div class="browser-mock__bar">
+          <span></span><span></span><span></span>
+          <div class="browser-mock__url">yourbusiness.com</div>
+        </div>
+        <div class="browser-mock__screen">
+          <div class="mock-nav"></div>
+          <div class="mock-hero">
+            <div class="mock-line mock-line--h"></div>
+            <div class="mock-line mock-line--p"></div>
+            <div class="mock-line mock-line--btn"></div>
+          </div>
+          <div class="mock-cards">
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text">
+          <span class="label">About</span>
+          <h2>Local web design,<br />personal attention.</h2>
+          <p>
+            I'm a San Marcos-based web designer focused on helping small businesses
+            build a real online presence. When you work with me, you're not getting
+            handed off to an account manager — you're working directly with the
+            person building your site.
+          </p>
+          <p>
+            My goal is straightforward: give local businesses the kind of website
+            that used to cost agency prices, at a rate that actually makes sense
+            for a small operation.
+          </p>
+          <a href="#contact" class="btn btn--primary">Get in Touch</a>
+        </div>
+        <div class="about__stats">
+          <div class="stat-card">
+            <div class="stat-card__icon">&#9651;</div>
+            <div class="stat-card__num">100%</div>
+            <div class="stat-card__label">Mobile-first design</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__icon">&#9675;</div>
+            <div class="stat-card__num">Fast</div>
+            <div class="stat-card__label">Page load speeds</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__icon">&#9632;</div>
+            <div class="stat-card__num">You own</div>
+            <div class="stat-card__label">Everything — files, hosting, domain</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__icon">&#9670;</div>
+            <div class="stat-card__num">Local</div>
+            <div class="stat-card__label">San Marcos &amp; surrounding area</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section__header">
+        <span class="label">Services</span>
+        <h2>What I offer</h2>
+        <p>Everything a small business needs to look good and get found online.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Custom Website Design</h3>
+          <p>Hand-built websites tailored to your business — not a template with your logo slapped on it.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <h3>Mobile-Friendly</h3>
+          <p>Every site I build looks and works great on phones, tablets, and desktops — no exceptions.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>Local SEO Setup</h3>
+          <p>Basic SEO and Google Business Profile setup so customers in the area can actually find you.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Ongoing Maintenance</h3>
+          <p>Optional monthly care plan — updates, backups, and small changes so you never have to worry about it.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.43 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3>Direct Communication</h3>
+          <p>You have my number. No support tickets, no account managers, no runaround.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Performance &amp; Speed</h3>
+          <p>Fast-loading pages that keep visitors from bouncing and help with search rankings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work section" id="work">
+    <div class="container">
+      <div class="section__header">
+        <span class="label">Work</span>
+        <h2>Recent projects</h2>
+        <p>A growing portfolio — check back as more projects go live.</p>
+      </div>
+      <div class="work__grid">
+        <div class="work-card work-card--placeholder">
+          <div class="work-card__img">
+            <div class="work-card__coming">Project Coming Soon</div>
+          </div>
+          <div class="work-card__info">
+            <h3>Local Restaurant</h3>
+            <p>Menu, hours, online reservations, and a site that loads fast on mobile.</p>
+            <span class="tag">In Progress</span>
+          </div>
+        </div>
+        <div class="work-card work-card--placeholder">
+          <div class="work-card__img">
+            <div class="work-card__coming">Project Coming Soon</div>
+          </div>
+          <div class="work-card__info">
+            <h3>Service Business</h3>
+            <p>Clean, credibility-building site for a local service provider.</p>
+            <span class="tag">In Progress</span>
+          </div>
+        </div>
+        <div class="work-card work-card--cta">
+          <div class="work-card__cta-inner">
+            <p>Your business<br />could be here.</p>
+            <a href="#contact" class="btn btn--primary btn--sm">Let's build it</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="contact__grid">
+        <div class="contact__text">
+          <span class="label">Contact</span>
+          <h2>Ready to get started?</h2>
+          <p>
+            Tell me about your business and what you're looking for.
+            I'll get back to you within one business day.
+          </p>
+          <ul class="contact__details">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              San Marcos, TX
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              hello@yoursite.com
+            </li>
+          </ul>
+        </div>
+        <form class="contact__form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="business">Business Name</label>
+              <input type="text" id="business" name="business" placeholder="Smith's Coffee Co." />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Tell me about your project</label>
+            <textarea id="message" name="message" rows="5" placeholder="What does your business do? Do you have an existing site? What's most important to you?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+          <p class="form__note">No commitment, no pressure — just a conversation.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="nav__logo">Johann<span>.</span></span>
+        <p>Web design for San Marcos small businesses.</p>
+        <p class="footer__copy">&copy; 2026 Johann. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
