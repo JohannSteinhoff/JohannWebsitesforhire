@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>San Marcos TX — Website Prospects</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #222637;
+      --border: #2e3248;
+      --accent: #6c63ff;
+      --accent2: #00d4aa;
+      --warn: #f59e0b;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .logo { font-size: 1.2rem; font-weight: 700; color: var(--accent); }
+    .logo span { color: var(--text); }
+    .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* STAT CARDS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      padding: 20px 24px 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .stat-card .val {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .stat-card .lbl { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+    .val.purple { color: var(--accent); }
+    .val.teal   { color: var(--accent2); }
+    .val.amber  { color: var(--warn); }
+    .val.green  { color: var(--success); }
+    .val.red    { color: var(--danger); }
+
+    /* TOOLBAR */
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      padding: 16px 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    input[type="text"], select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 8px 12px;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    input[type="text"]:focus, select:focus { border-color: var(--accent); }
+    input[type="text"]#search { width: 220px; }
+    .toolbar select { min-width: 130px; }
+    .spacer { flex: 1; }
+
+    /* BUTTONS */
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .15s, transform .1s;
+      white-space: nowrap;
+    }
+    .btn:hover { opacity: .85; }
+    .btn:active { transform: scale(.97); }
+    .btn-primary  { background: var(--accent);  color: #fff; }
+    .btn-teal     { background: var(--accent2); color: #111; }
+    .btn-ghost    { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .btn-danger   { background: var(--danger);  color: #fff; }
+    .btn-sm { padding: 5px 10px; font-size: 0.78rem; }
+
+    /* TABLE */
+    .table-wrap {
+      padding: 0 24px 24px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    thead tr {
+      background: var(--surface2);
+      border-bottom: 2px solid var(--border);
+    }
+    th {
+      padding: 10px 12px;
+      text-align: left;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    th:hover { color: var(--text); }
+    th .sort-icon { margin-left: 4px; opacity: .4; }
+    th.sorted .sort-icon { opacity: 1; color: var(--accent); }
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .1s;
+    }
+    tbody tr:hover { background: var(--surface2); }
+    td { padding: 10px 12px; vertical-align: middle; }
+    td.name-cell { font-weight: 600; max-width: 180px; }
+    td.notes-cell { max-width: 200px; color: var(--muted); font-size: 0.8rem; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+    .empty-state .icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+    /* STATUS BADGES */
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge-new       { background: #2d3748; color: #a0aec0; }
+    .badge-contacted { background: #1e3a5f; color: #63b3ed; }
+    .badge-meeting   { background: #2d1b69; color: #b794f4; }
+    .badge-proposal  { background: #3d2a00; color: var(--warn); }
+    .badge-closed    { background: #14532d; color: #86efac; }
+    .badge-lost      { background: #450a0a; color: #fca5a5; }
+
+    /* PRIORITY */
+    .priority { font-size: 0.8rem; font-weight: 700; }
+    .priority-high   { color: var(--danger); }
+    .priority-medium { color: var(--warn); }
+    .priority-low    { color: var(--muted); }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.65);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+    }
+    .modal h2 { margin-bottom: 20px; font-size: 1.1rem; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 9px 12px;
+      font-size: 0.875rem;
+      outline: none;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+
+    /* INFO PANEL */
+    .info-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin: 0 24px 20px;
+      padding: 16px 20px;
+    }
+    .info-panel summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--accent2);
+      font-size: 0.9rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .info-panel summary::-webkit-details-marker { display: none; }
+    .info-panel[open] summary::before { content: '▼'; font-size: .7rem; }
+    .info-panel:not([open]) summary::before { content: '▶'; font-size: .7rem; }
+    .info-panel .content {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      font-size: 0.85rem;
+    }
+    .tip-box {
+      background: var(--surface2);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .tip-box h4 { color: var(--accent); margin-bottom: 8px; font-size: 0.82rem; }
+    .tip-box ul { padding-left: 16px; color: var(--muted); line-height: 1.7; }
+    .tip-box a { color: var(--accent2); text-decoration: none; }
+    .tip-box a:hover { text-decoration: underline; }
+
+    /* TAGS */
+    .tag {
+      display: inline-block;
+      background: var(--surface2);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin: 1px;
+    }
+
+    /* ROW ACTIONS */
+    .row-actions { display: flex; gap: 6px; }
+
+    /* SCANNER MODAL */
+    .scan-modal { max-width: 680px; }
+    .terminal {
+      background: #0a0c10;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      font-family: 'Cascadia Code', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #a8b4c8;
+      height: 260px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .terminal .log-ok   { color: #a8b4c8; }
+    .terminal .log-good { color: var(--accent2); }
+    .terminal .log-err  { color: var(--danger); }
+    .scan-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .scan-status.idle    { background: var(--surface2); color: var(--muted); }
+    .scan-status.running { background: #1a2a1a; color: var(--accent2); }
+    .scan-status.done    { background: #14532d22; color: var(--success); }
+    .scan-status.error   { background: #450a0a33; color: var(--danger); }
+    .spinner {
+      width: 14px; height: 14px;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .preset-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .preset-btn {
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: .78rem;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .preset-btn:hover, .preset-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: #6c63ff18;
+    }
+    .key-input-wrap { position: relative; }
+    .key-input-wrap input { padding-right: 70px; }
+    .key-toggle {
+      position: absolute; right: 8px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      color: var(--muted); font-size: .75rem;
+      cursor: pointer; padding: 2px 6px;
+    }
+    .key-toggle:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .full { grid-column: 1; }
+      .info-panel .content { grid-template-columns: 1fr; }
+      input[type="text"]#search { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Prospect<span>Tracker</span> <span style="color:var(--muted);font-size:.8rem;font-weight:400;">— San Marcos, TX</span></div>
+  <div class="header-actions">
+    <button class="btn btn-ghost" onclick="exportCSV()">Export CSV</button>
+    <button class="btn btn-ghost" onclick="importCSVClick()">Import CSV</button>
+    <input type="file" id="csvFileInput" accept=".csv" style="display:none" onchange="importCSV(event)" />
+    <button class="btn btn-teal" onclick="openScanModal()" id="scannerBtn">Run Scanner</button>
+    <button class="btn btn-primary" onclick="openModal()">+ Add Business</button>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats" id="stats"></div>
+
+<!-- AUTO SCANNER PANEL -->
+<details class="info-panel" style="margin-top:20px;" id="scannerPanel">
+  <summary>Automated Scanner — Google Places API Setup</summary>
+  <div style="margin-top:14px;font-size:.875rem;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div class="tip-box" style="grid-column:1/-1;">
+        <h4 style="color:var(--accent2);">How it works</h4>
+        <p style="color:var(--muted);line-height:1.7;">
+          The <code style="color:var(--text);background:var(--bg);padding:1px 5px;border-radius:4px;">scanner/scan.js</code> script calls the Google Places API,
+          checks every business listing for a <strong>website field</strong>, and exports a CSV of all businesses missing one.
+          Import that CSV here with one click — no duplicates added.
+        </p>
+      </div>
+      <div class="tip-box">
+        <h4>Step 1 — Get a free API key</h4>
+        <ul>
+          <li>Go to <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a></li>
+          <li>Create a project → Enable <strong>Places API (New)</strong></li>
+          <li>Go to Credentials → <strong>Create API Key</strong></li>
+          <li>Google gives $200 free credit/month</li>
+          <li>Scanning all categories costs ~$5–15 total</li>
+        </ul>
+      </div>
+      <div class="tip-box">
+        <h4>Step 2 — Run the scanner</h4>
+        <ul>
+          <li>Open a terminal in <code style="color:var(--text);">WebsiteFreeLance/scanner/</code></li>
+          <li>Run: <code style="color:var(--accent2);">GOOGLE_API_KEY=your_key node scan.js</code></li>
+          <li>Or scan one category: <code style="color:var(--accent2);">node scan.js --types restaurant,cafe</code></li>
+          <li>Results saved to <code style="color:var(--text);">scanner/results/</code></li>
+        </ul>
+      </div>
+      <div class="tip-box">
+        <h4>Step 3 — Import results</h4>
+        <ul>
+          <li>Click <strong>Import CSV</strong> above and select the file from <code style="color:var(--text);">scanner/results/</code></li>
+          <li>Duplicates are skipped automatically (matched by name+address)</li>
+          <li>Re-run weekly for fresh leads — existing records won't be overwritten</li>
+        </ul>
+      </div>
+      <div class="tip-box">
+        <h4>Available scan commands</h4>
+        <ul>
+          <li><code style="color:var(--accent2);">node scan.js</code> — all 27 categories</li>
+          <li><code style="color:var(--accent2);">npm run scan:restaurants</code></li>
+          <li><code style="color:var(--accent2);">npm run scan:beauty</code></li>
+          <li><code style="color:var(--accent2);">npm run scan:auto</code></li>
+          <li><code style="color:var(--accent2);">npm run scan:trades</code></li>
+          <li><code style="color:var(--accent2);">npm run scan:retail</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</details>
+
+<!-- HOW TO FIND PROSPECTS (MANUAL) -->
+<details class="info-panel">
+  <summary>Manual methods — find businesses without websites in San Marcos, TX</summary>
+  <div class="content">
+    <div class="tip-box">
+      <h4>Google Maps Method</h4>
+      <ul>
+        <li>Search <em>"restaurants San Marcos TX"</em> on Google Maps</li>
+        <li>Open each listing — if there's <strong>no website link</strong>, it's a prospect</li>
+        <li>Look for the globe icon — its absence = opportunity</li>
+        <li>Also check for <em>"Order online"</em> links via third-party, not their own site</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <h4>Yelp Method</h4>
+      <ul>
+        <li>Search a category on <a href="https://www.yelp.com/search?find_desc=&find_loc=San+Marcos%2C+TX" target="_blank">Yelp San Marcos</a></li>
+        <li>Filter by category (auto repair, salons, etc.)</li>
+        <li>Open each biz page — missing "Business Website" = lead</li>
+        <li>Note their phone and email for outreach</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <h4>Facebook Method</h4>
+      <ul>
+        <li>Search Facebook for <em>"San Marcos TX businesses"</em></li>
+        <li>Look for local business groups / pages</li>
+        <li>Businesses with only Facebook presence = high need</li>
+        <li>Check if their page has a website linked</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <h4>High-Value Categories</h4>
+      <ul>
+        <li>Auto repair / detailing shops</li>
+        <li>Hair salons &amp; barbershops</li>
+        <li>Local restaurants &amp; food trucks</li>
+        <li>Cleaning &amp; landscaping services</li>
+        <li>Plumbers, electricians, HVAC</li>
+        <li>Boutiques &amp; local retail</li>
+      </ul>
+    </div>
+  </div>
+</details>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <input type="text" id="search" placeholder="Search businesses..." oninput="renderTable()" />
+  <select id="filterStatus" onchange="renderTable()">
+    <option value="">All Statuses</option>
+    <option value="new">New</option>
+    <option value="contacted">Contacted</option>
+    <option value="meeting">Meeting Set</option>
+    <option value="proposal">Proposal Sent</option>
+    <option value="closed">Closed Won</option>
+    <option value="lost">Lost</option>
+  </select>
+  <select id="filterCategory" onchange="renderTable()">
+    <option value="">All Categories</option>
+  </select>
+  <select id="filterPriority" onchange="renderTable()">
+    <option value="">All Priorities</option>
+    <option value="high">High</option>
+    <option value="medium">Medium</option>
+    <option value="low">Low</option>
+  </select>
+  <div class="spacer"></div>
+  <span id="resultCount" style="color:var(--muted);font-size:.8rem;white-space:nowrap;"></span>
+</div>
+
+<!-- TABLE -->
+<div class="table-wrap">
+  <table id="prospectsTable">
+    <thead>
+      <tr>
+        <th onclick="sortBy('name')">Business <span class="sort-icon">↕</span></th>
+        <th onclick="sortBy('category')">Category <span class="sort-icon">↕</span></th>
+        <th onclick="sortBy('phone')">Phone <span class="sort-icon">↕</span></th>
+        <th onclick="sortBy('address')">Address <span class="sort-icon">↕</span></th>
+        <th onclick="sortBy('status')">Status <span class="sort-icon">↕</span></th>
+        <th onclick="sortBy('priority')">Priority <span class="sort-icon">↕</span></th>
+        <th onclick="sortBy('value')">Est. Value <span class="sort-icon">↕</span></th>
+        <th onclick="sortBy('addedDate')">Added <span class="sort-icon">↕</span></th>
+        <th>Notes</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <div id="emptyState" class="empty-state" style="display:none;">
+    <div class="icon">🔍</div>
+    <div style="font-size:1.1rem;font-weight:600;margin-bottom:6px;">No prospects yet</div>
+    <div style="color:var(--muted);">Click "Add Business" to start tracking leads.</div>
+  </div>
+</div>
+
+<!-- ADD / EDIT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal">
+    <h2 id="modalTitle">Add Business Prospect</h2>
+    <div class="form-grid">
+      <div class="field full">
+        <label>Business Name *</label>
+        <input type="text" id="f-name" placeholder="e.g. Maria's Tacos" />
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select id="f-category">
+          <option value="">Select...</option>
+          <option>Restaurant / Food</option>
+          <option>Auto Repair / Detailing</option>
+          <option>Hair Salon / Barbershop</option>
+          <option>Cleaning Service</option>
+          <option>Landscaping</option>
+          <option>Plumbing / HVAC / Electric</option>
+          <option>Boutique / Retail</option>
+          <option>Nail Salon / Spa</option>
+          <option>Fitness / Gym</option>
+          <option>Real Estate</option>
+          <option>Photography</option>
+          <option>Food Truck</option>
+          <option>Childcare / Daycare</option>
+          <option>Pet Services</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Priority</label>
+        <select id="f-priority">
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Phone</label>
+        <input type="text" id="f-phone" placeholder="(512) 000-0000" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" id="f-email" placeholder="owner@example.com" />
+      </div>
+      <div class="field full">
+        <label>Address</label>
+        <input type="text" id="f-address" placeholder="123 Main St, San Marcos, TX" />
+      </div>
+      <div class="field">
+        <label>Status</label>
+        <select id="f-status">
+          <option value="new">New</option>
+          <option value="contacted">Contacted</option>
+          <option value="meeting">Meeting Set</option>
+          <option value="proposal">Proposal Sent</option>
+          <option value="closed">Closed Won</option>
+          <option value="lost">Lost</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Estimated Value ($)</label>
+        <input type="text" id="f-value" placeholder="e.g. 1500" />
+      </div>
+      <div class="field">
+        <label>Source Found</label>
+        <select id="f-source">
+          <option value="">Select...</option>
+          <option>Google Maps</option>
+          <option>Yelp</option>
+          <option>Facebook</option>
+          <option>Instagram</option>
+          <option>Drive By</option>
+          <option>Referral</option>
+          <option>Cold Walk-in</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Google Maps Link</label>
+        <input type="text" id="f-gmaps" placeholder="Paste Google Maps URL" />
+      </div>
+      <div class="field full">
+        <label>Notes</label>
+        <textarea id="f-notes" rows="3" placeholder="Owner name, best time to call, what they're using instead of a website..."></textarea>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveBusiness()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ─── DATA ───────────────────────────────────────────────────────────────────
+  const STORAGE_KEY = 'sm_prospects_v1';
+  let prospects = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  let editingId = null;
+  let sortKey = 'addedDate';
+  let sortDir = -1; // -1 = desc
+
+  function save() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(prospects));
+  }
+
+  function genId() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2);
+  }
+
+  // ─── STATS ──────────────────────────────────────────────────────────────────
+  function renderStats() {
+    const total = prospects.length;
+    const contacted = prospects.filter(p => ['contacted','meeting','proposal','closed'].includes(p.status)).length;
+    const closed = prospects.filter(p => p.status === 'closed').length;
+    const revenue = prospects.filter(p => p.status === 'closed').reduce((s,p) => s + (parseFloat(p.value)||0), 0);
+    const pipeline = prospects.filter(p => !['closed','lost'].includes(p.status)).reduce((s,p) => s + (parseFloat(p.value)||0), 0);
+
+    document.getElementById('stats').innerHTML = `
+      <div class="stat-card"><div class="val purple">${total}</div><div class="lbl">Total Prospects</div></div>
+      <div class="stat-card"><div class="val teal">${contacted}</div><div class="lbl">In Pipeline</div></div>
+      <div class="stat-card"><div class="val green">${closed}</div><div class="lbl">Closed Won</div></div>
+      <div class="stat-card"><div class="val amber">$${pipeline.toLocaleString()}</div><div class="lbl">Pipeline Value</div></div>
+      <div class="stat-card"><div class="val green">$${revenue.toLocaleString()}</div><div class="lbl">Revenue Earned</div></div>
+    `;
+  }
+
+  // ─── TABLE ──────────────────────────────────────────────────────────────────
+  const STATUS_MAP = {
+    new: 'badge-new', contacted: 'badge-contacted',
+    meeting: 'badge-meeting', proposal: 'badge-proposal',
+    closed: 'badge-closed', lost: 'badge-lost'
+  };
+  const STATUS_LABELS = {
+    new: 'New', contacted: 'Contacted', meeting: 'Meeting Set',
+    proposal: 'Proposal Sent', closed: 'Closed Won', lost: 'Lost'
+  };
+  const PRIORITY_LABELS = { high: 'High', medium: 'Med', low: 'Low' };
+
+  function renderTable() {
+    const q = document.getElementById('search').value.toLowerCase();
+    const fs = document.getElementById('filterStatus').value;
+    const fc = document.getElementById('filterCategory').value;
+    const fp = document.getElementById('filterPriority').value;
+
+    let rows = prospects.filter(p => {
+      if (q && !`${p.name}${p.category}${p.address}${p.notes}${p.phone}`.toLowerCase().includes(q)) return false;
+      if (fs && p.status !== fs) return false;
+      if (fc && p.category !== fc) return false;
+      if (fp && p.priority !== fp) return false;
+      return true;
+    });
+
+    // sort
+    rows.sort((a, b) => {
+      let av = a[sortKey] ?? '', bv = b[sortKey] ?? '';
+      if (sortKey === 'value') { av = parseFloat(av)||0; bv = parseFloat(bv)||0; }
+      if (av < bv) return -1 * sortDir;
+      if (av > bv) return 1 * sortDir;
+      return 0;
+    });
+
+    document.getElementById('resultCount').textContent = `${rows.length} result${rows.length!==1?'s':''}`;
+
+    const tbody = document.getElementById('tableBody');
+    if (rows.length === 0) {
+      tbody.innerHTML = '';
+      document.getElementById('emptyState').style.display = 'block';
+    } else {
+      document.getElementById('emptyState').style.display = 'none';
+      tbody.innerHTML = rows.map(p => {
+        const pri = p.priority || 'medium';
+        const priLabel = PRIORITY_LABELS[pri];
+        const val = p.value ? `$${parseFloat(p.value).toLocaleString()}` : '—';
+        const date = p.addedDate ? new Date(p.addedDate).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '—';
+        const mapsLink = p.gmaps ? `<a href="${escHtml(p.gmaps)}" target="_blank" style="color:var(--accent2);font-size:.75rem;" title="Open Maps">📍</a>` : '';
+        return `
+          <tr>
+            <td class="name-cell">${escHtml(p.name)} ${mapsLink}</td>
+            <td><span class="tag">${escHtml(p.category||'—')}</span></td>
+            <td>${p.phone ? `<a href="tel:${escHtml(p.phone)}" style="color:var(--text);text-decoration:none;">${escHtml(p.phone)}</a>` : '—'}</td>
+            <td style="max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escHtml(p.address||'—')}</td>
+            <td><span class="badge ${STATUS_MAP[p.status]||'badge-new'}">${STATUS_LABELS[p.status]||p.status}</span></td>
+            <td><span class="priority priority-${pri}">${priLabel}</span></td>
+            <td>${val}</td>
+            <td style="color:var(--muted);">${date}</td>
+            <td class="notes-cell" title="${escHtml(p.notes||'')}">${escHtml(p.notes||'—')}</td>
+            <td>
+              <div class="row-actions">
+                <button class="btn btn-ghost btn-sm" onclick="editBusiness('${p.id}')">Edit</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteBusiness('${p.id}')">Del</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    renderStats();
+    populateCategoryFilter();
+  }
+
+  function escHtml(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function populateCategoryFilter() {
+    const sel = document.getElementById('filterCategory');
+    const current = sel.value;
+    const cats = [...new Set(prospects.map(p=>p.category).filter(Boolean))].sort();
+    sel.innerHTML = '<option value="">All Categories</option>' + cats.map(c=>`<option value="${escHtml(c)}" ${c===current?'selected':''}>${escHtml(c)}</option>`).join('');
+  }
+
+  function sortBy(key) {
+    if (sortKey === key) sortDir *= -1;
+    else { sortKey = key; sortDir = 1; }
+    document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+    document.querySelectorAll('th').forEach(th => { if (th.textContent.toLowerCase().includes(key.toLowerCase())) th.classList.add('sorted'); });
+    renderTable();
+  }
+
+  // ─── MODAL ──────────────────────────────────────────────────────────────────
+  function openModal(id) {
+    editingId = id || null;
+    const p = id ? prospects.find(x=>x.id===id) : null;
+    document.getElementById('modalTitle').textContent = p ? 'Edit Business' : 'Add Business Prospect';
+
+    document.getElementById('f-name').value     = p?.name     || '';
+    document.getElementById('f-category').value = p?.category || '';
+    document.getElementById('f-priority').value = p?.priority || 'medium';
+    document.getElementById('f-phone').value    = p?.phone    || '';
+    document.getElementById('f-email').value    = p?.email    || '';
+    document.getElementById('f-address').value  = p?.address  || '';
+    document.getElementById('f-status').value   = p?.status   || 'new';
+    document.getElementById('f-value').value    = p?.value    || '';
+    document.getElementById('f-source').value   = p?.source   || '';
+    document.getElementById('f-gmaps').value    = p?.gmaps    || '';
+    document.getElementById('f-notes').value    = p?.notes    || '';
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.getElementById('f-name').focus();
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    editingId = null;
+  }
+
+  function closeModalOnOverlay(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  function saveBusiness() {
+    const name = document.getElementById('f-name').value.trim();
+    if (!name) { alert('Business name is required.'); return; }
+
+    const data = {
+      id: editingId || genId(),
+      name,
+      category: document.getElementById('f-category').value,
+      priority: document.getElementById('f-priority').value,
+      phone:    document.getElementById('f-phone').value.trim(),
+      email:    document.getElementById('f-email').value.trim(),
+      address:  document.getElementById('f-address').value.trim(),
+      status:   document.getElementById('f-status').value,
+      value:    document.getElementById('f-value').value.trim(),
+      source:   document.getElementById('f-source').value,
+      gmaps:    document.getElementById('f-gmaps').value.trim(),
+      notes:    document.getElementById('f-notes').value.trim(),
+      addedDate: editingId ? (prospects.find(p=>p.id===editingId)?.addedDate || new Date().toISOString()) : new Date().toISOString(),
+      updatedDate: new Date().toISOString(),
+    };
+
+    if (editingId) {
+      const i = prospects.findIndex(p=>p.id===editingId);
+      if (i > -1) prospects[i] = data;
+    } else {
+      prospects.unshift(data);
+    }
+
+    save();
+    closeModal();
+    renderTable();
+  }
+
+  function editBusiness(id) { openModal(id); }
+
+  function deleteBusiness(id) {
+    const p = prospects.find(x=>x.id===id);
+    if (!p) return;
+    if (!confirm(`Delete "${p.name}"? This cannot be undone.`)) return;
+    prospects = prospects.filter(x=>x.id!==id);
+    save();
+    renderTable();
+  }
+
+  // ─── EXPORT / IMPORT CSV ────────────────────────────────────────────────────
+  const CSV_FIELDS = ['name','category','priority','phone','email','address','status','value','source','gmaps','notes','addedDate'];
+
+  function exportCSV() {
+    const header = CSV_FIELDS.join(',');
+    const rows = prospects.map(p => CSV_FIELDS.map(f => `"${String(p[f]||'').replace(/"/g,'""')}"`).join(','));
+    const blob = new Blob([header + '\n' + rows.join('\n')], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `prospects_san_marcos_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+  }
+
+  function importCSVClick() { document.getElementById('csvFileInput').click(); }
+
+  function importCSV(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      const lines = ev.target.result.split('\n').filter(l=>l.trim());
+      const headers = lines[0].split(',').map(h=>h.replace(/"/g,'').trim());
+      let added = 0, skipped = 0;
+
+      // Build a dedup key set from existing prospects
+      const existingKeys = new Set(prospects.map(p => dedupKey(p)));
+
+      for (let i=1; i<lines.length; i++) {
+        const vals = parseCSVLine(lines[i]);
+        if (!vals[0]) continue;
+        const obj = { id: genId(), addedDate: new Date().toISOString() };
+        headers.forEach((h,idx) => { obj[h] = (vals[idx] || '').trim(); });
+        if (!obj.name) continue;
+
+        const key = dedupKey(obj);
+        if (existingKeys.has(key)) { skipped++; continue; }
+
+        existingKeys.add(key);
+        prospects.unshift(obj);
+        added++;
+      }
+      save();
+      renderTable();
+      alert(`Import complete:\n  Added:   ${added} new businesses\n  Skipped: ${skipped} duplicates`);
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  }
+
+  // Dedup key: lowercase name + first part of address (street number + street name)
+  function dedupKey(p) {
+    const name = (p.name||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+    const addr = (p.address||'').toLowerCase().split(',')[0].replace(/[^a-z0-9]/g,'');
+    return `${name}__${addr}`;
+  }
+
+  function parseCSVLine(line) {
+    const result = [];
+    let cur = '', inQ = false;
+    for (let i=0; i<line.length; i++) {
+      const c = line[i];
+      if (c==='"') { inQ=!inQ; continue; }
+      if (c===',' && !inQ) { result.push(cur); cur=''; continue; }
+      cur += c;
+    }
+    result.push(cur);
+    return result;
+  }
+
+  // ─── KEYBOARD SHORTCUT ──────────────────────────────────────────────────────
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeScanModal(); }
+    if ((e.ctrlKey||e.metaKey) && e.key === 'k') { e.preventDefault(); openModal(); }
+  });
+
+  // ─── INIT ───────────────────────────────────────────────────────────────────
+  renderTable();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SCANNER MODAL
+════════════════════════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="scanOverlay" onclick="closeScanOnOverlay(event)">
+  <div class="modal scan-modal">
+    <h2 style="display:flex;align-items:center;gap:10px;">
+      <span style="color:var(--accent2);">&#9654;</span> Google Places Scanner
+    </h2>
+
+    <!-- Status bar -->
+    <div class="scan-status idle" id="scanStatus">
+      <span>Idle — configure below and click Start</span>
+    </div>
+
+    <!-- API Key -->
+    <div class="field" style="margin-bottom:14px;">
+      <label>Google Places API Key</label>
+      <div class="key-input-wrap">
+        <input type="password" id="s-apiKey" placeholder="AIza..." autocomplete="off" />
+        <button class="key-toggle" onclick="toggleKeyVis()" id="keyToggleBtn">show</button>
+      </div>
+      <div style="font-size:.74rem;color:var(--muted);margin-top:5px;">
+        Saved locally in your browser.
+        <a href="https://console.cloud.google.com" target="_blank" style="color:var(--accent2);">Get a free key →</a>
+        (Enable <strong>Places API (New)</strong>)
+      </div>
+    </div>
+
+    <!-- Category presets -->
+    <div class="field" style="margin-bottom:14px;">
+      <label>Category Preset</label>
+      <div class="preset-btns" id="presetBtns">
+        <button class="preset-btn active" data-preset="all" onclick="selectPreset(this)">All (27 types)</button>
+        <button class="preset-btn" data-preset="food"     onclick="selectPreset(this)">Food &amp; Drink</button>
+        <button class="preset-btn" data-preset="beauty"   onclick="selectPreset(this)">Beauty</button>
+        <button class="preset-btn" data-preset="auto"     onclick="selectPreset(this)">Auto</button>
+        <button class="preset-btn" data-preset="trades"   onclick="selectPreset(this)">Trades</button>
+        <button class="preset-btn" data-preset="retail"   onclick="selectPreset(this)">Retail</button>
+        <button class="preset-btn" data-preset="custom"   onclick="selectPreset(this)">Custom</button>
+      </div>
+      <input type="text" id="s-types" placeholder="restaurant,cafe,hair_care  (comma-separated)"
+             style="width:100%;display:none;" />
+    </div>
+
+    <!-- Live terminal -->
+    <div class="field" style="margin-bottom:14px;">
+      <label>Live Output <span id="scanFoundBadge" style="display:none;margin-left:8px;padding:2px 8px;background:#14532d;color:#86efac;border-radius:10px;font-size:.7rem;font-weight:700;"></span></label>
+      <div class="terminal" id="scanTerminal">Ready. Press Start Scan to begin...\n</div>
+    </div>
+
+    <div class="modal-actions" style="justify-content:space-between;">
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-ghost" id="clearTermBtn" onclick="clearTerminal()">Clear</button>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-ghost" onclick="closeScanModal()">Close</button>
+        <button class="btn btn-ghost" id="recheckBtn" style="display:none;" onclick="recheckServer()">Recheck Server</button>
+        <button class="btn btn-danger btn-sm" id="stopScanBtn" style="display:none;" onclick="stopScan()">Stop</button>
+        <button class="btn btn-teal" id="startScanBtn" onclick="startScan()">Start Scan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SCANNER UI
+  // ═══════════════════════════════════════════════════════════════════════════
+  const PRESETS = {
+    all:    '',
+    food:   'restaurant,cafe,bakery,meal_takeaway,meal_delivery,food',
+    beauty: 'hair_care,beauty_salon,nail_salon,spa',
+    auto:   'car_repair,car_wash,car_dealer',
+    trades: 'electrician,plumber,general_contractor,roofing_contractor,painter,locksmith',
+    retail: 'clothing_store,furniture_store,home_goods_store,pet_store,florist',
+  };
+
+  let evtSource = null;
+  const SCANNER_ORIGIN = 'http://localhost:3333';
+
+  async function checkServer() {
+    try {
+      const r = await fetch(`${SCANNER_ORIGIN}/api/latest`, { signal: AbortSignal.timeout(2000) });
+      return r.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  async function openScanModal() {
+    document.getElementById('scanOverlay').classList.add('open');
+    setScanStatus('running', 'Checking server...');
+    document.getElementById('startScanBtn').disabled = true;
+
+    const up = await checkServer();
+
+    if (!up) {
+      setScanStatus('error', 'Server not detected on port 3333');
+      document.getElementById('scanTerminal').innerHTML =
+        '<span class="log-err">⚠  Could not reach the scanner server on port 3333.\n\n</span>' +
+        '<span class="log-good">To start it:\n\n</span>' +
+        '<span class="log-ok">  1. Open a new terminal window\n\n' +
+        '  2. Navigate to your project folder:\n' +
+        '        C:\\Users\\johann\\OneDrive\\Desktop\\Code\\WebsiteFreeLance\\\n\n' +
+        '  3. Run:\n</span>' +
+        '<span class="log-good">        node prospect-server.js\n\n</span>' +
+        '<span class="log-ok">  4. Leave that terminal open and come back here.\n\n</span>' +
+        '<span class="log-ok">Then click </span><span class="log-good">Recheck Server</span>' +
+        '<span class="log-ok"> below — no need to refresh the page.\n</span>';
+      document.getElementById('startScanBtn').style.display = 'none';
+      document.getElementById('recheckBtn').style.display = '';
+      return;
+    }
+
+    document.getElementById('recheckBtn').style.display = 'none';
+    document.getElementById('startScanBtn').style.display = '';
+    document.getElementById('startScanBtn').disabled = false;
+    setScanStatus('idle', 'Server connected — ready to scan');
+    document.getElementById('scanTerminal').textContent = 'Ready. Press Start Scan to begin...\n';
+    const saved = localStorage.getItem('sm_api_key');
+    if (saved) document.getElementById('s-apiKey').value = saved;
+  }
+
+  async function recheckServer() {
+    setScanStatus('running', 'Rechecking server...');
+    document.getElementById('recheckBtn').disabled = true;
+    const up = await checkServer();
+    document.getElementById('recheckBtn').disabled = false;
+    if (up) {
+      openScanModal();
+    } else {
+      setScanStatus('error', 'Still not detected — is the terminal running node prospect-server.js?');
+    }
+  }
+
+  function closeScanModal() {
+    document.getElementById('scanOverlay').classList.remove('open');
+  }
+
+  function closeScanOnOverlay(e) {
+    if (e.target === document.getElementById('scanOverlay')) closeScanModal();
+  }
+
+  function toggleKeyVis() {
+    const inp = document.getElementById('s-apiKey');
+    const btn = document.getElementById('keyToggleBtn');
+    if (inp.type === 'password') { inp.type = 'text'; btn.textContent = 'hide'; }
+    else { inp.type = 'password'; btn.textContent = 'show'; }
+  }
+
+  function selectPreset(el) {
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    const typesInput = document.getElementById('s-types');
+    if (el.dataset.preset === 'custom') {
+      typesInput.style.display = '';
+      typesInput.focus();
+    } else {
+      typesInput.style.display = 'none';
+      typesInput.value = PRESETS[el.dataset.preset] || '';
+    }
+  }
+
+  function setScanStatus(state, msg) {
+    const el = document.getElementById('scanStatus');
+    el.className = `scan-status ${state}`;
+    const spinner = state === 'running' ? '<div class="spinner"></div>' : '';
+    el.innerHTML = `${spinner}<span>${msg}</span>`;
+  }
+
+  function termLog(msg, cls = 'log-ok') {
+    const t = document.getElementById('scanTerminal');
+    const span = document.createElement('span');
+    span.className = cls;
+    span.textContent = msg;
+    t.appendChild(span);
+    t.scrollTop = t.scrollHeight;
+  }
+
+  function clearTerminal() {
+    document.getElementById('scanTerminal').innerHTML = '';
+  }
+
+  function startScan() {
+    const apiKey = document.getElementById('s-apiKey').value.trim();
+    if (!apiKey) { alert('Enter your Google Places API key.'); return; }
+    localStorage.setItem('sm_api_key', apiKey);
+
+    const activePreset = document.querySelector('.preset-btn.active')?.dataset.preset;
+    let types = activePreset === 'custom'
+      ? document.getElementById('s-types').value.trim()
+      : (PRESETS[activePreset] || '');
+
+    clearTerminal();
+    termLog('Starting scan...\n', 'log-good');
+    setScanStatus('running', 'Scanning Google Places...');
+    document.getElementById('startScanBtn').style.display = 'none';
+    document.getElementById('stopScanBtn').style.display  = '';
+    document.getElementById('scanFoundBadge').style.display = 'none';
+
+    const params = new URLSearchParams({ key: apiKey });
+    if (types) params.set('types', types);
+
+    evtSource = new EventSource(`${SCANNER_ORIGIN}/api/scan?${params}`);
+
+    evtSource.onmessage = function(e) {
+      const data = JSON.parse(e.data);
+      if (data.type === 'log') {
+        const isGood = data.msg.includes('✅') || data.msg.includes('found');
+        const isErr  = data.msg.includes('❌') || data.msg.includes('error') || data.msg.includes('Error');
+        termLog(data.msg, isGood ? 'log-good' : isErr ? 'log-err' : 'log-ok');
+      }
+      if (data.type === 'results') {
+        const added = mergeProspects(data.prospects);
+        const badge = document.getElementById('scanFoundBadge');
+        badge.textContent = `+${added} imported`;
+        badge.style.display = '';
+        termLog(`\n✅  Auto-imported ${added} new prospects into dashboard.\n`, 'log-good');
+      }
+      if (data.type === 'done') {
+        evtSource.close();
+        evtSource = null;
+        setScanStatus(data.code === 0 ? 'done' : 'error',
+          data.code === 0 ? 'Scan complete — results imported below.' : `Scan exited with code ${data.code}`);
+        document.getElementById('startScanBtn').style.display = '';
+        document.getElementById('stopScanBtn').style.display  = 'none';
+        renderTable();
+      }
+    };
+
+    evtSource.onerror = function() {
+      termLog('\n⚠  Connection lost. The server may have stopped.\n', 'log-err');
+      setScanStatus('error', 'Connection error — is server.js running?');
+      document.getElementById('startScanBtn').style.display = '';
+      document.getElementById('stopScanBtn').style.display  = 'none';
+      evtSource?.close();
+      evtSource = null;
+    };
+  }
+
+  function stopScan() {
+    evtSource?.close();
+    evtSource = null;
+    termLog('\n⛔  Scan stopped by user.\n', 'log-err');
+    setScanStatus('idle', 'Stopped.');
+    document.getElementById('startScanBtn').style.display = '';
+    document.getElementById('stopScanBtn').style.display  = 'none';
+    renderTable();
+  }
+
+  // Merge scan results into prospects, skip duplicates
+  function mergeProspects(incoming) {
+    const existingKeys = new Set(prospects.map(p => dedupKey(p)));
+    let added = 0;
+    for (const p of incoming) {
+      const key = dedupKey(p);
+      if (existingKeys.has(key)) continue;
+      existingKeys.add(key);
+      prospects.unshift({ ...p, id: p.id || genId() });
+      added++;
+    }
+    save();
+    return added;
+  }
+</script>
+</body>
+</html>

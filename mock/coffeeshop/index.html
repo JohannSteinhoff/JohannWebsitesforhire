@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morning Ritual Coffee | San Marcos, TX</title>
+  <title>Groundwork Café | San Marcos, TX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -16,12 +16,20 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="../../index.html#work" class="back-link">← Portfolio</a>
-      <a href="#" class="logo">Morning Ritual</a>
+      <a href="#" class="logo">Groundwork Café</a>
       <ul class="nav__links">
         <li><a href="#menu">Menu</a></li>
         <li><a href="#about">Our Story</a></li>
         <li><a href="#contact">Visit Us</a></li>
       </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#menu">Menu</a>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Visit Us</a>
     </div>
   </nav>
 
@@ -94,7 +102,7 @@
         <div class="about__text">
           <span class="label">Our Story</span>
           <h2>Coffee as a<br /><em>daily practice.</em></h2>
-          <p>Morning Ritual started in 2019 as a one-person pop-up at the San Marcos farmers market. Today we have a full café, a roasting program, and a community we didn't expect.</p>
+          <p>Groundwork Café started in 2019 as a one-person pop-up at the San Marcos farmers market. Today we have a full café, a roasting program, and a community we didn't expect.</p>
           <p>We believe great coffee starts at the source. We pay above fair-trade prices for all our beans, visit our farmers when we can, and never rush the roast.</p>
           <blockquote>"We're not just selling coffee. We're selling a moment in your morning."</blockquote>
         </div>
@@ -120,18 +128,22 @@
           <div class="extra-card"><h4>🛍️ Beans to Go</h4><p>Take home a bag of your favorite roast.</p></div>
         </div>
       </div>
+      <div class="contact__map">
+        <iframe src="https://maps.google.com/maps?q=88+LBJ+Drive+San+Marcos+TX+78666&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" title="Groundwork Café location"></iframe>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p class="footer__logo">Morning Ritual</p>
+      <p class="footer__logo">Groundwork Café</p>
       <p>88 LBJ Drive · San Marcos, TX · Open daily</p>
-      <p class="footer__sub">&copy; 2026 Morning Ritual Coffee · Demo site built by Johann</p>
+      <p class="footer__sub">&copy; 2026 Groundwork Café · Demo site built by Johann</p>
     </div>
   </footer>
 
   <a href="../../index.html#work" class="demo-badge">Demo site · Johann</a>
+  <script src="../shared.js"></script>
 
 </body>
 </html>

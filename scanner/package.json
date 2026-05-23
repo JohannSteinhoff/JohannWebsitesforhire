@@ -1,0 +1,16 @@
+{
+  "name": "prospect-scanner",
+  "version": "1.0.0",
+  "description": "Scans Google Places API for San Marcos TX businesses without websites",
+  "type": "module",
+  "scripts": {
+    "scan": "node scan.js",
+    "scan:restaurants": "node scan.js --types restaurant,cafe,bakery",
+    "scan:auto": "node scan.js --types car_repair,car_wash,car_dealer",
+    "scan:beauty": "node scan.js --types hair_care,beauty_salon,nail_salon,spa",
+    "scan:trades": "node scan.js --types electrician,plumber,general_contractor,roofing_contractor",
+    "scan:food": "node scan.js --types restaurant,cafe,bakery,meal_takeaway,meal_delivery,food",
+    "scan:retail": "node scan.js --types clothing_store,furniture_store,home_goods_store,pet_store"
+  },
+  "dependencies": {}
+}

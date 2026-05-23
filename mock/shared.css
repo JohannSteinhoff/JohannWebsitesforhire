@@ -22,6 +22,179 @@
 }
 .demo-badge:hover { background: rgba(0, 0, 0, 0.92); }
 
+/* =============================================
+   MOBILE HAMBURGER NAV
+   ============================================= */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+  color: inherit;
+}
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+.nav__hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav__hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav__mobile {
+  display: none;
+  flex-direction: column;
+  padding: 10px 24px 18px;
+  border-top: 1px solid rgba(128, 128, 128, 0.14);
+}
+.nav__mobile.open { display: flex; }
+.nav__mobile a {
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+  font-family: system-ui, sans-serif;
+}
+.nav__mobile a:last-child { border-bottom: none; }
+.nav__mobile a:hover { opacity: 0.65; }
+
+@media (max-width: 640px) {
+  .nav__links { display: none !important; }
+  .nav__hamburger { display: flex; }
+}
+
+/* =============================================
+   GOOGLE MAPS EMBED
+   ============================================= */
+.contact__map {
+  margin-top: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(128, 128, 128, 0.18);
+  line-height: 0;
+}
+.contact__map iframe {
+  display: block;
+  width: 100%;
+  height: 280px;
+  border: none;
+}
+
+/* =============================================
+   BOOKING FORM (Velour Studio)
+   ============================================= */
+.contact__booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.booking-form {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(128, 128, 128, 0.16);
+  border-radius: 16px;
+  padding: 32px;
+  font-family: system-ui, sans-serif;
+}
+
+.booking-form h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.booking-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.booking-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.booking-form__group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  opacity: 0.58;
+  letter-spacing: 0.02em;
+}
+
+.booking-form__group input,
+.booking-form__group select {
+  font-family: inherit;
+  font-size: 0.93rem;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+
+.booking-form__group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding-right: 32px;
+  cursor: pointer;
+}
+
+.booking-form__group input:focus,
+.booking-form__group select:focus {
+  border-color: rgba(128, 128, 128, 0.5);
+  box-shadow: 0 0 0 3px rgba(128, 128, 128, 0.08);
+}
+
+.booking-form__group input::placeholder { opacity: 0.38; }
+
+.booking-form__note {
+  text-align: center;
+  font-size: 0.78rem;
+  opacity: 0.42;
+  margin-top: 12px;
+}
+
+.btn--booking-success {
+  opacity: 0.85;
+  cursor: default;
+}
+
+@media (max-width: 860px) {
+  .contact__booking-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+@media (max-width: 480px) {
+  .booking-form__row { grid-template-columns: 1fr; }
+  .booking-form { padding: 22px; }
+}
+
 /* Back link used inside mock navs */
 .back-link {
   font-size: 0.82rem;

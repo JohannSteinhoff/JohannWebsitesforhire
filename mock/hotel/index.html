@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Hill Country Inn | San Marcos, TX</title>
+  <title>Ridgecrest Lodge | San Marcos, TX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -16,13 +16,22 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="../../index.html#work" class="back-link">← Portfolio</a>
-      <a href="#" class="logo">The Hill Country <em>Inn</em></a>
+      <a href="#" class="logo">Ridgecrest <em>Lodge</em></a>
       <ul class="nav__links">
         <li><a href="#rooms">Rooms</a></li>
         <li><a href="#amenities">Amenities</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#contact" class="nav__book">Book Now</a></li>
       </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact">Book Now</a>
     </div>
   </nav>
 
@@ -126,18 +135,22 @@
         </div>
         <a href="tel:5125550147" class="btn btn--gold">Call to Reserve</a>
       </div>
+      <div class="contact__map">
+        <iframe src="https://maps.google.com/maps?q=789+River+Road+San+Marcos+TX+78666&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" title="Ridgecrest Lodge location"></iframe>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p class="footer__logo">The Hill Country <em>Inn</em></p>
+      <p class="footer__logo">Ridgecrest <em>Lodge</em></p>
       <p>789 River Road · San Marcos, TX · (512) 555-0147</p>
-      <p class="footer__sub">&copy; 2026 The Hill Country Inn · Demo site built by Johann</p>
+      <p class="footer__sub">&copy; 2026 Ridgecrest Lodge · Demo site built by Johann</p>
     </div>
   </footer>
 
   <a href="../../index.html#work" class="demo-badge">Demo site · Johann</a>
+  <script src="../shared.js"></script>
 
 </body>
 </html>

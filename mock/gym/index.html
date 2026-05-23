@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iron Valley Fitness | San Marcos, TX</title>
+  <title>Apex Athletic | San Marcos, TX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -16,13 +16,22 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="../../index.html#work" class="back-link">← Portfolio</a>
-      <a href="#" class="logo">IRON VALLEY <span>FITNESS</span></a>
+      <a href="#" class="logo">APEX ATHLETIC</a>
       <ul class="nav__links">
         <li><a href="#classes">Classes</a></li>
         <li><a href="#membership">Membership</a></li>
         <li><a href="#contact">Visit</a></li>
         <li><a href="#membership" class="nav__join">Join Now</a></li>
       </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#classes">Classes</a>
+      <a href="#membership">Membership</a>
+      <a href="#contact">Visit</a>
+      <a href="#membership">Join Now</a>
     </div>
   </nav>
 
@@ -179,18 +188,22 @@
           <div class="c-stat"><strong>24/7</strong><span>keycard access</span></div>
         </div>
       </div>
+      <div class="contact__map">
+        <iframe src="https://maps.google.com/maps?q=144+E+Hopkins+Street+San+Marcos+TX+78666&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" title="Apex Athletic location"></iframe>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p class="footer__logo">IRON VALLEY <span>FITNESS</span></p>
+      <p class="footer__logo">APEX ATHLETIC</p>
       <p>144 E Hopkins St · San Marcos, TX · (512) 555-0571 · Open 24/7</p>
-      <p class="footer__sub">&copy; 2026 Iron Valley Fitness · Demo site built by Johann</p>
+      <p class="footer__sub">&copy; 2026 Apex Athletic · Demo site built by Johann</p>
     </div>
   </footer>
 
   <a href="../../index.html#work" class="demo-badge">Demo site · Johann</a>
+  <script src="../shared.js"></script>
 
 </body>
 </html>

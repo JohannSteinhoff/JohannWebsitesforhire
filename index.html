@@ -4,25 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Johann | Web Design · San Marcos, TX</title>
+  <meta name="description" content="Custom web design for local businesses in San Marcos, TX. Fast, mobile-first websites without the agency overhead." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" /></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="stock-images.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=hero-loop-fix-1" />
 </head>
 <body>
 
+  <!-- Hidden SVG filter for liquid glass refraction -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <!--
+        SourceGraphic is the correct input for CSS backdrop-filter contexts.
+        script.js fills these feImage nodes with generated red/green
+        displacement maps and white specular maps.
+      -->
+      <filter id="liquid-glass-card" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feImage id="lg-map-card" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="displacement_map"/>
+        <feDisplacementMap in="SourceGraphic" in2="displacement_map" scale="28" xChannelSelector="R" yChannelSelector="G" result="refracted"/>
+        <feGaussianBlur in="refracted" stdDeviation="0.12" result="soft_refracted"/>
+        <feOffset in="refracted" dx="3.8" dy="0" result="red_offset"/>
+        <feColorMatrix in="red_offset" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.62 0" result="red_fringe"/>
+        <feOffset in="refracted" dx="-3.8" dy="0" result="cyan_offset"/>
+        <feColorMatrix in="cyan_offset" type="matrix" values="0 0 0 0 0  0 0.80 0 0 0  0 0 1 0 0  0 0 0 0.58 0" result="cyan_fringe"/>
+        <feBlend in="soft_refracted" in2="red_fringe" mode="screen" result="with_red"/>
+        <feBlend in="with_red" in2="cyan_fringe" mode="screen" result="with_chroma"/>
+        <feImage id="lg-spec-card" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="specular_map"/>
+        <feBlend in="with_chroma" in2="specular_map" mode="screen"/>
+      </filter>
+
+      <filter id="liquid-glass-pill" x="-16%" y="-90%" width="132%" height="280%" color-interpolation-filters="sRGB">
+        <feImage id="lg-map-pill" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="displacement_map"/>
+        <feDisplacementMap in="SourceGraphic" in2="displacement_map" scale="18" xChannelSelector="R" yChannelSelector="G" result="refracted"/>
+        <feGaussianBlur in="refracted" stdDeviation="0.08" result="soft_refracted"/>
+        <feOffset in="refracted" dx="4.2" dy="0" result="red_offset"/>
+        <feColorMatrix in="red_offset" type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.72 0" result="red_fringe"/>
+        <feOffset in="refracted" dx="-4.2" dy="0" result="cyan_offset"/>
+        <feColorMatrix in="cyan_offset" type="matrix" values="0 0 0 0 0  0 0.82 0 0 0  0 0 1 0 0  0 0 0 0.68 0" result="cyan_fringe"/>
+        <feBlend in="soft_refracted" in2="red_fringe" mode="screen" result="with_red"/>
+        <feBlend in="with_red" in2="cyan_fringe" mode="screen" result="with_chroma"/>
+        <feImage id="lg-spec-pill" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="specular_map"/>
+        <feBlend in="with_chroma" in2="specular_map" mode="screen"/>
+      </filter>
+
+      <filter id="liquid-glass-inner" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+        <feImage id="lg-map-inner" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" result="displacement_map"/>
+        <feDisplacementMap in="SourceGraphic" in2="displacement_map" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- Floating orbs — the colored light behind the glass -->
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+  </div>
+
   <!-- NAV -->
-  <nav class="nav" id="nav">
+  <nav class="nav glass" id="nav">
     <div class="nav__inner">
       <a href="#" class="nav__logo">Johann<span>.</span></a>
       <ul class="nav__links">
+        <li class="nav__active-bubble" aria-hidden="true"></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#contact" class="nav__cta">Let's Talk</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#work">Demos</a></li>
+        <li><a href="#contact" class="btn btn--glass nav__cta magnetic">Let's Talk</a></li>
       </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
       <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -30,94 +85,234 @@
     <div class="nav__mobile" id="mobileMenu">
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#work">Demos</a>
       <a href="#contact">Let's Talk</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero__inner">
-      <div class="hero__badge">Based in San Marcos, TX</div>
-      <h1 class="hero__headline">
+      <div class="hero__badge reveal">
+        <span class="hero__badge-dot"></span>
+        Available · San Marcos, TX
+      </div>
+      <h1 class="hero__headline reveal">
         Websites that work<br />
         <em>as hard as you do.</em>
       </h1>
-      <p class="hero__sub">
+      <p class="hero__sub reveal">
         I build clean, fast, mobile-friendly websites for local businesses
         in the San Marcos area — without the agency overhead.
       </p>
-      <div class="hero__actions">
-        <a href="#contact" class="btn btn--primary">Start a Project</a>
-        <a href="#work" class="btn btn--ghost">See My Work</a>
+      <div class="hero__actions reveal">
+        <a href="#contact" class="btn btn--primary magnetic">Start a Project</a>
+        <a href="#work" class="btn btn--glass magnetic">See My Work</a>
       </div>
-      <p class="hero__note">
+      <p class="hero__note reveal">
         Currently accepting new clients at <strong>introductory rates</strong> — limited spots available.
       </p>
     </div>
-    <div class="hero__visual">
-      <div class="browser-mock">
-        <div class="browser-mock__bar">
-          <span></span><span></span><span></span>
-          <div class="browser-mock__url">yourbusiness.com</div>
-        </div>
-        <div class="browser-mock__screen">
-          <div class="mock-nav"></div>
-          <div class="mock-hero">
-            <div class="mock-line mock-line--h"></div>
-            <div class="mock-line mock-line--p"></div>
-            <div class="mock-line mock-line--btn"></div>
+
+    <!-- Glass browser showcase visual -->
+    <div class="hero__visual" aria-hidden="true">
+      <div class="glass-showcase">
+        <!-- Main browser window -->
+        <div class="gs-browser glass">
+          <div class="gs-bar">
+            <div class="gs-dots">
+              <span class="gs-dot gs-dot--red"></span>
+              <span class="gs-dot gs-dot--yellow"></span>
+              <span class="gs-dot gs-dot--green"></span>
+            </div>
+            <div class="gs-url">localbusiness.com</div>
           </div>
-          <div class="mock-cards">
-            <div class="mock-card"></div>
-            <div class="mock-card"></div>
-            <div class="mock-card"></div>
+          <div class="gs-screen">
+            <div class="gs-screen-viewport">
+              <div class="gs-page-track">
+                <div class="gs-page gs-page--home">
+                  <div class="gs-brand-row">
+                    <span class="gs-brand-name">Your Brand</span>
+                    <span class="gs-brand-pill"></span>
+                    <span class="gs-brand-pill"></span>
+                  </div>
+                  <div class="gs-hero-area">
+                    <div class="gs-hl gs-hl--h"></div>
+                    <div class="gs-hl gs-hl--sub"></div>
+                    <div class="gs-hl gs-hl--btn"></div>
+                  </div>
+                  <div class="gs-cards-row">
+                    <div class="gs-mini-card"></div>
+                    <div class="gs-mini-card"></div>
+                    <div class="gs-mini-card"></div>
+                  </div>
+                </div>
+
+                <div class="gs-page gs-page--services">
+                  <div class="gs-section-kicker">What We Offer</div>
+                  <div class="gs-service-list">
+                    <div class="gs-service-card">
+                      <span></span>
+                      <strong></strong>
+                      <em></em>
+                    </div>
+                    <div class="gs-service-card">
+                      <span></span>
+                      <strong></strong>
+                      <em></em>
+                    </div>
+                    <div class="gs-service-card">
+                      <span></span>
+                      <strong></strong>
+                      <em></em>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="gs-page gs-page--demos">
+                  <div class="gs-section-kicker">Customer Reviews</div>
+                  <div class="gs-demo-feature">
+                    <div class="gs-demo-img"></div>
+                    <div class="gs-demo-copy">
+                      <span></span>
+                      <strong></strong>
+                      <em></em>
+                    </div>
+                  </div>
+                  <div class="gs-demo-row">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+
+                <div class="gs-page gs-page--gallery">
+                  <div class="gs-section-kicker">Photo Gallery</div>
+                  <div class="gs-gallery-grid">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="gs-gallery-caption">
+                    <strong></strong>
+                    <em></em>
+                  </div>
+                </div>
+
+                <div class="gs-page gs-page--booking">
+                  <div class="gs-section-kicker">Book a Visit</div>
+                  <div class="gs-booking-card">
+                    <div class="gs-booking-row">
+                      <span></span>
+                      <strong></strong>
+                    </div>
+                    <div class="gs-booking-row">
+                      <span></span>
+                      <strong></strong>
+                    </div>
+                    <div class="gs-booking-cta"></div>
+                  </div>
+                </div>
+
+                <div class="gs-page gs-page--home gs-page--loop">
+                  <div class="gs-brand-row">
+                    <span class="gs-brand-name">Your Brand</span>
+                    <span class="gs-brand-pill"></span>
+                    <span class="gs-brand-pill"></span>
+                  </div>
+                  <div class="gs-hero-area">
+                    <div class="gs-hl gs-hl--h"></div>
+                    <div class="gs-hl gs-hl--sub"></div>
+                    <div class="gs-hl gs-hl--btn"></div>
+                  </div>
+                  <div class="gs-cards-row">
+                    <div class="gs-mini-card"></div>
+                    <div class="gs-mini-card"></div>
+                    <div class="gs-mini-card"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="gs-scroll-thumb"></div>
           </div>
         </div>
+        <!-- Floating badge: Page Speed -->
+        <div class="gs-badge gs-badge--tl glass">
+          <span class="gs-badge-icon">⚡</span>
+          <div>
+            <div class="gs-badge-lbl">Fast Website</div>
+            <div class="gs-badge-val">99/100</div>
+          </div>
+        </div>
+        <!-- Floating badge: Mobile -->
+        <div class="gs-badge gs-badge--br glass">
+          <span class="gs-badge-icon">📱</span>
+          <div>
+            <div class="gs-badge-lbl">Mobile Ready</div>
+            <div class="gs-badge-val">100%</div>
+          </div>
+        </div>
+        <!-- Small chip -->
+        <div class="gs-chip glass">Get Found Online</div>
       </div>
     </div>
   </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-content">
+        Custom Websites&nbsp;&nbsp;·&nbsp;&nbsp;San Marcos TX&nbsp;&nbsp;·&nbsp;&nbsp;Mobile First&nbsp;&nbsp;·&nbsp;&nbsp;SEO Ready&nbsp;&nbsp;·&nbsp;&nbsp;Fast Load Times&nbsp;&nbsp;·&nbsp;&nbsp;Local Business Focus&nbsp;&nbsp;·&nbsp;&nbsp;No Agency Overhead&nbsp;&nbsp;·&nbsp;&nbsp;You Own Everything&nbsp;&nbsp;·&nbsp;&nbsp;
+      </span>
+      <span class="marquee-content" aria-hidden="true">
+        Custom Websites&nbsp;&nbsp;·&nbsp;&nbsp;San Marcos TX&nbsp;&nbsp;·&nbsp;&nbsp;Mobile First&nbsp;&nbsp;·&nbsp;&nbsp;SEO Ready&nbsp;&nbsp;·&nbsp;&nbsp;Fast Load Times&nbsp;&nbsp;·&nbsp;&nbsp;Local Business Focus&nbsp;&nbsp;·&nbsp;&nbsp;No Agency Overhead&nbsp;&nbsp;·&nbsp;&nbsp;You Own Everything&nbsp;&nbsp;·&nbsp;&nbsp;
+      </span>
+    </div>
+  </div>
 
   <!-- ABOUT -->
   <section class="about section" id="about">
     <div class="container">
       <div class="about__grid">
         <div class="about__text">
-          <span class="label">About</span>
-          <h2>Local web design,<br />personal attention.</h2>
-          <p>
+          <span class="label reveal">About</span>
+          <h2 class="reveal">Local web design,<br />personal attention.</h2>
+          <p class="reveal">
             I'm a San Marcos-based web designer focused on helping small businesses
             build a real online presence. When you work with me, you're not getting
             handed off to an account manager — you're working directly with the
             person building your site.
           </p>
-          <p>
+          <p class="reveal">
             My goal is straightforward: give local businesses the kind of website
             that used to cost agency prices, at a rate that actually makes sense
             for a small operation.
           </p>
-          <a href="#contact" class="btn btn--primary">Get in Touch</a>
+          <p class="reveal">
+            I graduated <strong>cum laude from Texas State University</strong> with a degree in
+            Computer Science and minors in Communication and Mathematics — so I can
+            build technically solid sites and actually explain what I'm doing in plain English.
+          </p>
+          <a href="#contact" class="btn btn--primary magnetic reveal">Get in Touch</a>
         </div>
         <div class="about__stats">
-          <div class="stat-card">
-            <div class="stat-card__icon">&#9651;</div>
-            <div class="stat-card__num">100%</div>
+          <div class="stat-card glass reveal" data-tilt>
+            <div class="stat-card__num" data-target="100" data-suffix="%">0%</div>
             <div class="stat-card__label">Mobile-first design</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__icon">&#9675;</div>
-            <div class="stat-card__num">Fast</div>
-            <div class="stat-card__label">Page load speeds</div>
+          <div class="stat-card glass reveal" data-tilt>
+            <div class="stat-card__num">&lt;1s</div>
+            <div class="stat-card__label">Target page load</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__icon">&#9632;</div>
-            <div class="stat-card__num">You own</div>
-            <div class="stat-card__label">Everything — files, hosting, domain</div>
+          <div class="stat-card glass reveal" data-tilt>
+            <div class="stat-card__num" data-target="9" data-suffix="+">0+</div>
+            <div class="stat-card__label">Demo sites built</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-card__icon">&#9670;</div>
-            <div class="stat-card__num">Local</div>
-            <div class="stat-card__label">San Marcos &amp; surrounding area</div>
+          <div class="stat-card glass reveal" data-tilt>
+            <div class="stat-card__num">You</div>
+            <div class="stat-card__label">Own everything — files, hosting, domain</div>
           </div>
         </div>
       </div>
@@ -128,52 +323,254 @@
   <section class="services section" id="services">
     <div class="container">
       <div class="section__header">
-        <span class="label">Services</span>
-        <h2>What I offer</h2>
-        <p>Everything a small business needs to look good and get found online.</p>
+        <span class="label reveal">Services</span>
+        <h2 class="reveal">What I offer</h2>
+        <p class="reveal">Everything a small business needs to look good and get found online.</p>
       </div>
+      <p class="services__hint reveal">Click any card to learn more</p>
       <div class="services__grid">
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+
+        <div class="service-card glass reveal" data-flip>
+          <div class="service-card__inner">
+            <div class="service-card__front">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <h3>Custom Website Design</h3>
+              <p>Hand-built websites tailored to your business — not a template with your logo slapped on it.</p>
+              <span class="service-card__tap">Tap to learn more ↓</span>
+            </div>
+            <div class="service-card__back">
+              <h3>Why custom beats a template</h3>
+              <ul>
+                <li>Wix and Squarespace sites all look the same — customers can tell</li>
+                <li>Templates are bloated with code you don't use, which slows your site down</li>
+                <li>A custom site is built around <em>your</em> services, <em>your</em> tone, <em>your</em> customers</li>
+                <li>You own every file — no platform lock-in, no monthly ransom</li>
+              </ul>
+              <span class="service-card__tap">Tap to flip back ↑</span>
+            </div>
           </div>
-          <h3>Custom Website Design</h3>
-          <p>Hand-built websites tailored to your business — not a template with your logo slapped on it.</p>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+
+        <div class="service-card glass reveal" data-flip>
+          <div class="service-card__inner">
+            <div class="service-card__front">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+              </div>
+              <h3>Mobile-Friendly</h3>
+              <p>Every site I build looks and works great on phones, tablets, and desktops — no exceptions.</p>
+              <span class="service-card__tap">Tap to learn more ↓</span>
+            </div>
+            <div class="service-card__back">
+              <h3>Mobile is everything now</h3>
+              <ul>
+                <li>Over 60% of web traffic comes from phones — if your site breaks on mobile, you're losing customers</li>
+                <li>Google ranks mobile-first — a bad mobile experience hurts your search position</li>
+                <li>Every site I build is tested on real devices before delivery</li>
+                <li>Buttons, forms, and menus are all thumb-friendly — no pinching and zooming</li>
+              </ul>
+              <span class="service-card__tap">Tap to flip back ↑</span>
+            </div>
           </div>
-          <h3>Mobile-Friendly</h3>
-          <p>Every site I build looks and works great on phones, tablets, and desktops — no exceptions.</p>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+
+        <div class="service-card glass reveal" data-flip>
+          <div class="service-card__inner">
+            <div class="service-card__front">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </div>
+              <h3>Local SEO Setup</h3>
+              <p>Basic SEO and Google Business Profile setup so customers in the area can actually find you.</p>
+              <span class="service-card__tap">Tap to learn more ↓</span>
+            </div>
+            <div class="service-card__back">
+              <h3>Get found in your city</h3>
+              <ul>
+                <li>I set up your Google Business Profile — the map listing that shows up when people search "near me"</li>
+                <li>Every page gets proper title tags, descriptions, and heading structure that Google actually reads</li>
+                <li>I add schema markup and submit your site to Search Console so Google indexes you fast</li>
+              </ul>
+              <span class="service-card__tap">Tap to flip back ↑</span>
+            </div>
           </div>
-          <h3>Local SEO Setup</h3>
-          <p>Basic SEO and Google Business Profile setup so customers in the area can actually find you.</p>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+        <div class="service-card glass reveal" data-flip>
+          <div class="service-card__inner">
+            <div class="service-card__front">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3>Ongoing Maintenance</h3>
+              <p>Optional monthly care plan — updates, backups, and small changes so you never have to worry about it.</p>
+              <span class="service-card__tap">Tap to learn more ↓</span>
+            </div>
+            <div class="service-card__back">
+              <h3>Set it and forget it</h3>
+              <ul>
+                <li>Sites break over time — plugins stop working, hosting expires, links go dead. I handle it.</li>
+                <li>Need to update your hours, add a new menu item, or swap a photo? Just text me.</li>
+                <li>Monthly backups so you never lose anything</li>
+                <li>From $89/mo — less than most people spend on business software they barely use</li>
+              </ul>
+              <span class="service-card__tap">Tap to flip back ↑</span>
+            </div>
           </div>
-          <h3>Ongoing Maintenance</h3>
-          <p>Optional monthly care plan — updates, backups, and small changes so you never have to worry about it.</p>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.43 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+
+        <div class="service-card glass reveal" data-flip>
+          <div class="service-card__inner">
+            <div class="service-card__front">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.43 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.94-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <h3>Direct Communication</h3>
+              <p>You have my number. No support tickets, no account managers, no runaround.</p>
+              <span class="service-card__tap">Tap to learn more ↓</span>
+            </div>
+            <div class="service-card__back">
+              <h3>The person you hire is the person who builds it</h3>
+              <ul>
+                <li>At agencies, a salesperson closes the deal and hands you off to a junior dev you've never met</li>
+                <li>With me, you talk directly to the person writing your code — nothing gets lost in translation</li>
+                <li>I have a minor in Communication from Texas State — I know how to explain tech clearly without the jargon</li>
+              </ul>
+              <span class="service-card__tap">Tap to flip back ↑</span>
+            </div>
           </div>
-          <h3>Direct Communication</h3>
-          <p>You have my number. No support tickets, no account managers, no runaround.</p>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+
+        <div class="service-card glass reveal" data-flip>
+          <div class="service-card__inner">
+            <div class="service-card__front">
+              <div class="service-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <h3>Performance &amp; Speed</h3>
+              <p>Fast-loading pages that keep visitors from bouncing and help with search rankings.</p>
+              <span class="service-card__tap">Tap to learn more ↓</span>
+            </div>
+            <div class="service-card__back">
+              <h3>Speed is a competitive advantage</h3>
+              <ul>
+                <li>53% of visitors leave a site that takes more than 3 seconds to load — that's money walking out the door</li>
+                <li>Google uses page speed as a ranking signal — slow sites rank lower</li>
+                <li>My sites are hand-coded with no bloated frameworks, which means they load fast out of the box</li>
+                <li>Wix and WordPress sites average 4–8 seconds. Mine target under 1.</li>
+              </ul>
+              <span class="service-card__tap">Tap to flip back ↑</span>
+            </div>
           </div>
-          <h3>Performance &amp; Speed</h3>
-          <p>Fast-loading pages that keep visitors from bouncing and help with search rankings.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing section" id="pricing">
+    <div class="container">
+      <div class="section__header">
+        <span class="label reveal">Pricing</span>
+        <h2 class="reveal">Straightforward rates</h2>
+        <p class="reveal">No surprise invoices. You know the cost before we start.</p>
+      </div>
+      <div class="pricing__founding-banner reveal">
+        <span class="pricing__founding-tag">🎉 Founding Client Rate — 70% Off</span>
+        <p>I'm taking on my first few clients at a steep discount while I build my portfolio. You get a professional site at a fraction of the price — and I get real-world experience. Win-win.</p>
+      </div>
+      <div class="pricing__grid">
+        <div class="pricing-card glass reveal">
+          <div class="pricing-card__header">
+            <h3>Starter</h3>
+            <div class="pricing-card__price">
+              <span class="price__was">was $799</span>
+              <div class="pricing-card__price-main">
+                <span class="price__from">from</span>
+                <span class="price__num">$240</span>
+              </div>
+            </div>
+          </div>
+          <p class="pricing-card__desc">Everything a new local business needs to get online fast.</p>
+          <ul class="pricing-card__list">
+            <li>Up to 5 pages</li>
+            <li>Mobile-first design</li>
+            <li>Contact form</li>
+            <li>Basic on-page SEO</li>
+            <li>You own all files &amp; hosting</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost btn--full magnetic">Get a Quote</a>
+        </div>
+        <div class="pricing-card pricing-card--featured glass reveal">
+          <div class="pricing-card__badge">Most Popular</div>
+          <div class="pricing-card__header">
+            <h3>Growth</h3>
+            <div class="pricing-card__price">
+              <span class="price__was">was $1,499</span>
+              <div class="pricing-card__price-main">
+                <span class="price__from">from</span>
+                <span class="price__num">$450</span>
+              </div>
+            </div>
+          </div>
+          <p class="pricing-card__desc">A fully custom site built to convert visitors into customers.</p>
+          <ul class="pricing-card__list">
+            <li>Up to 8 pages</li>
+            <li>Custom design — no templates</li>
+            <li>Google Business Profile setup</li>
+            <li>Analytics &amp; Search Console</li>
+            <li>Photo gallery or menu section</li>
+            <li>1 month support included</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary btn--full magnetic">Get a Quote</a>
+        </div>
+        <div class="pricing-card glass reveal">
+          <div class="pricing-card__header">
+            <h3>Premium</h3>
+            <div class="pricing-card__price">
+              <span class="price__was">was $2,499</span>
+              <div class="pricing-card__price-main">
+                <span class="price__from">from</span>
+                <span class="price__num">$750</span>
+              </div>
+            </div>
+          </div>
+          <p class="pricing-card__desc">For businesses that need a blog, online booking, or a content management system.</p>
+          <ul class="pricing-card__list">
+            <li>Unlimited pages</li>
+            <li>CMS — edit without code</li>
+            <li>Advanced local SEO package</li>
+            <li>Online booking integration</li>
+            <li>3 months maintenance included</li>
+            <li>Priority turnaround</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost btn--full magnetic">Get a Quote</a>
+        </div>
+      </div>
+      <p class="pricing__note reveal">All projects include a free consultation, revision rounds, and full source file delivery. Monthly care plans available from $89/mo. <strong>Founding rate is limited — price goes up once my first few projects are complete.</strong></p>
+
+      <div class="pricing__vs reveal">
+        <h3 style="text-align:center;margin-bottom:8px;font-size:1.1rem;">Why not just use Wix or Squarespace?</h3>
+        <p style="text-align:center;color:var(--muted);font-size:0.88rem;margin-bottom:24px;">DIY builders look easy but the costs and trade-offs add up fast. Here's the real comparison over 3 years.</p>
+        <div class="pricing__vs-grid">
+          <div class="pricing__vs-item">
+            <strong>Wix Core</strong>
+            <span class="vs-cost vs-cost--bad">$1,044+ over 3 years</span>
+            <span class="vs-note">$29/mo × 36 months — plus you're stuck on Wix forever, ads on lower tiers, limited SEO control, and the site looks like a template.</span>
+          </div>
+          <div class="pricing__vs-item">
+            <strong>Squarespace Business</strong>
+            <span class="vs-cost vs-cost--bad">$828+ over 3 years</span>
+            <span class="vs-note">$23/mo × 36 months — beautiful templates but they all look the same, transaction fees on sales, and you can't export your site if you leave.</span>
+          </div>
+          <div class="pricing__vs-item pricing__vs-item--mine">
+            <strong>Johann (Growth — Founding Rate)</strong>
+            <span class="vs-cost vs-cost--good">$450 one time</span>
+            <span class="vs-note">Custom-built, you own every file, host wherever you want (often $3–10/mo), no monthly lock-in, no platform fees, and a site that actually looks like yours.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -183,110 +580,105 @@
   <section class="work section" id="work">
     <div class="container">
       <div class="section__header">
-        <span class="label">Work</span>
-        <h2>Demo projects</h2>
-        <p>Mock demos built to show range — each one a different business, different design. Click any to explore the full site.</p>
+        <span class="label reveal">Work</span>
+        <h2 class="reveal">Demo projects</h2>
+        <p class="reveal">Mock demos built to show range — each one a different business, different design. Click any to explore the full site.</p>
       </div>
       <div class="work__grid">
-        <a href="mock/mechanic/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--mechanic">
-            <span class="work-card__emoji">🔧</span>
-          </div>
+        <a href="mock/mechanic/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--mechanic"></div>
           <div class="work-card__info">
             <span class="tag">Auto Shop</span>
-            <h3>TX Auto Works</h3>
+            <h3>Steelman Garage</h3>
             <p>Industrial dark theme, service grid, and trust-building layout for a mechanic shop.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/pizza/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--pizza">
-            <span class="work-card__emoji">🍕</span>
-          </div>
+        <a href="mock/pizza/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--pizza"></div>
           <div class="work-card__info">
             <span class="tag">Restaurant</span>
-            <h3>Marco's Pizzeria</h3>
+            <h3>Ember &amp; Flour</h3>
             <p>Warm Italian design, full menu section, and a quote block that builds personality.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/hotel/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--hotel">
-            <span class="work-card__emoji">🏨</span>
-          </div>
+        <a href="mock/hotel/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--hotel"></div>
           <div class="work-card__info">
             <span class="tag">Hotel</span>
-            <h3>Hill Country Inn</h3>
+            <h3>Ridgecrest Lodge</h3>
             <p>Upscale boutique hotel with room listings, amenities, and an elegant serif palette.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/carwash/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--carwash">
-            <span class="work-card__emoji">🚿</span>
-          </div>
+        <a href="mock/carwash/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--carwash"></div>
           <div class="work-card__info">
             <span class="tag">Car Wash</span>
-            <h3>Shine &amp; Go</h3>
+            <h3>Gloss &amp; Dash</h3>
             <p>Bright blue, pricing tiers, and a rain guarantee feature. Clean and trustworthy.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/coffeeshop/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--coffee">
-            <span class="work-card__emoji">☕</span>
-          </div>
+        <a href="mock/coffeeshop/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--coffee"></div>
           <div class="work-card__info">
             <span class="tag">Café</span>
-            <h3>Morning Ritual Coffee</h3>
+            <h3>Groundwork Café</h3>
             <p>Artisanal coffee shop with full menu, story section, and warm earthy tones.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/salon/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--salon">
-            <span class="work-card__emoji">✂️</span>
-          </div>
+        <a href="mock/salon/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--salon"></div>
           <div class="work-card__info">
             <span class="tag">Salon</span>
-            <h3>The Cut Co.</h3>
+            <h3>Velour Studio</h3>
             <p>Editorial black and blush pink design. Split-screen hero, services grid with pricing.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/lawfirm/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--law">
-            <span class="work-card__emoji">⚖️</span>
-          </div>
+        <a href="mock/lawfirm/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--law"></div>
           <div class="work-card__info">
             <span class="tag">Law Firm</span>
-            <h3>Hill &amp; Associates</h3>
+            <h3>Crest Legal Group</h3>
             <p>Navy and gold, trust-building trust bar, practice areas, and attorney profiles.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/gym/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--gym">
-            <span class="work-card__emoji">💪</span>
-          </div>
+        <a href="mock/gym/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--gym"></div>
           <div class="work-card__info">
             <span class="tag">Gym</span>
-            <h3>Iron Valley Fitness</h3>
+            <h3>Apex Athletic</h3>
             <p>Near-black with electric yellow. Condensed type, class schedule, membership tiers.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
-        <a href="mock/racetrack/index.html" class="work-card work-card--link">
-          <div class="work-card__img work-card__img--race">
-            <span class="work-card__emoji">🏁</span>
-          </div>
+        <a href="mock/racetrack/index.html" class="work-card work-card--link reveal">
+          <div class="work-card__img work-card__img--race"></div>
           <div class="work-card__info">
             <span class="tag">Racetrack</span>
-            <h3>Lone Star Speedway</h3>
+            <h3>Redline Circuit</h3>
             <p>High-drama racing aesthetic. Events list, ticket tiers, and a live ticker animation.</p>
             <span class="work-card__cta-link">View Demo →</span>
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner section">
+    <div class="container">
+      <div class="cta-banner__card glass reveal">
+        <div class="cta-banner__text">
+          <h2>Your business deserves a real website.</h2>
+          <p>Stop losing customers to competitors with better-looking sites. Let's fix that.</p>
+        </div>
+        <a href="#contact" class="btn btn--primary magnetic">Start a Project</a>
       </div>
     </div>
   </section>
@@ -296,24 +688,24 @@
     <div class="container">
       <div class="contact__grid">
         <div class="contact__text">
-          <span class="label">Contact</span>
-          <h2>Ready to get started?</h2>
-          <p>
+          <span class="label reveal">Contact</span>
+          <h2 class="reveal">Ready to get started?</h2>
+          <p class="reveal">
             Tell me about your business and what you're looking for.
             I'll get back to you within one business day.
           </p>
           <ul class="contact__details">
-            <li>
+            <li class="reveal">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               San Marcos, TX
             </li>
-            <li>
+            <li class="reveal">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              hello@yoursite.com
+              <a href="mailto:johannxsteinhoff@gmail.com">johannxsteinhoff@gmail.com</a>
             </li>
           </ul>
         </div>
-        <form class="contact__form" id="contactForm">
+        <form class="contact__form glass reveal" id="contactForm" data-tilt>
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name</label>
@@ -332,7 +724,7 @@
             <label for="message">Tell me about your project</label>
             <textarea id="message" name="message" rows="5" placeholder="What does your business do? Do you have an existing site? What's most important to you?" required></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+          <button type="submit" class="btn btn--primary btn--full magnetic">Send Message</button>
           <p class="form__note">No commitment, no pressure — just a conversation.</p>
         </form>
       </div>
@@ -343,13 +735,13 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
-        <span class="nav__logo">Johann<span>.</span></span>
+        <span class="footer__logo">Johann<span>.</span></span>
         <p>Web design for San Marcos small businesses.</p>
         <p class="footer__copy">&copy; 2026 Johann. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=hero-loop-fix-1"></script>
 </body>
 </html>

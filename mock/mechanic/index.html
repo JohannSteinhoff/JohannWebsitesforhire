@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TX Auto Works | San Marcos, TX</title>
+  <title>Steelman Garage | San Marcos, TX</title>
   <link rel="stylesheet" href="../shared.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -12,12 +12,20 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="../../index.html#work" class="back-link">← Portfolio</a>
-      <a href="#" class="logo">TX Auto<span> Works</span></a>
+      <a href="#" class="logo">Steelman<span> Garage</span></a>
       <ul class="nav__links">
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
@@ -93,7 +101,7 @@
         </div>
         <div class="about__text">
           <h2>Straight talk. <br />Fair prices.</h2>
-          <p>TX Auto Works has been serving San Marcos and the surrounding Hill Country since 2003. We're not a chain. We're your neighbors.</p>
+          <p>Steelman Garage has been serving San Marcos and the surrounding Hill Country since 2003. We're not a chain. We're your neighbors.</p>
           <p>Owner Mike Rodriguez started this shop after years of watching customers get overcharged at dealerships. The rule here: we tell you what's wrong, what it costs, and we don't touch anything you didn't approve.</p>
           <ul class="about__list">
             <li>✓ ASE-Certified technicians</li>
@@ -130,17 +138,21 @@
           <a href="tel:5125550184" class="btn btn--primary">Call (512) 555-0184</a>
         </div>
       </div>
+      <div class="contact__map">
+        <iframe src="https://maps.google.com/maps?q=1234+Post+Road+San+Marcos+TX+78666&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" title="Steelman Garage location"></iframe>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p><strong>TX Auto Works</strong> · 1234 Post Rd, San Marcos, TX 78666 · (512) 555-0184</p>
-      <p class="footer__sub">&copy; 2026 TX Auto Works · This is a demo site built by Johann</p>
+      <p><strong>Steelman Garage</strong> · 1234 Post Rd, San Marcos, TX 78666 · (512) 555-0184</p>
+      <p class="footer__sub">&copy; 2026 Steelman Garage · This is a demo site built by Johann</p>
     </div>
   </footer>
 
   <a href="../../index.html#work" class="demo-badge">Demo site · Johann</a>
+  <script src="../shared.js"></script>
 
 </body>
 </html>

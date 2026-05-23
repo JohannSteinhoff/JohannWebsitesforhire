@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shine & Go Car Wash | San Marcos, TX</title>
+  <title>Gloss & Dash Car Wash | San Marcos, TX</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -16,12 +16,20 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="../../index.html#work" class="back-link">← Portfolio</a>
-      <a href="#" class="logo">Shine<span>&amp;</span>Go</a>
+      <a href="#" class="logo">Gloss<span>&amp;</span>Dash</a>
       <ul class="nav__links">
         <li><a href="#packages">Packages</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Hours &amp; Location</a></li>
       </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="#packages">Packages</a>
+      <a href="#about">About</a>
+      <a href="#contact">Hours &amp; Location</a>
     </div>
   </nav>
 
@@ -100,7 +108,7 @@
     <div class="container">
       <div class="about__grid">
         <div class="about__text">
-          <span class="label">Why Shine &amp; Go</span>
+          <span class="label">Why Gloss &amp; Dash</span>
           <h2>Quick. Clean.<br />Good for the planet.</h2>
           <p>We use 60% less water than a typical driveway wash. Our soaps are biodegradable, and our runoff is fully filtered. Clean car, clean conscience.</p>
           <div class="about__stats">
@@ -133,17 +141,21 @@
           <a href="tel:5125550362" class="btn btn--primary">Call Ahead</a>
         </div>
       </div>
+      <div class="contact__map">
+        <iframe src="https://maps.google.com/maps?q=321+Wonder+World+Drive+San+Marcos+TX+78666&output=embed" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" title="Gloss &amp; Dash location"></iframe>
+      </div>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p><strong>Shine &amp; Go Car Wash</strong> · 321 Wonder World Dr · San Marcos, TX · (512) 555-0362</p>
-      <p class="footer__sub">&copy; 2026 Shine &amp; Go · Demo site built by Johann</p>
+      <p><strong>Gloss &amp; Dash Car Wash</strong> · 321 Wonder World Dr · San Marcos, TX · (512) 555-0362</p>
+      <p class="footer__sub">&copy; 2026 Gloss &amp; Dash · Demo site built by Johann</p>
     </div>
   </footer>
 
   <a href="../../index.html#work" class="demo-badge">Demo site · Johann</a>
+  <script src="../shared.js"></script>
 
 </body>
 </html>

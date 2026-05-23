@@ -1,0 +1,12 @@
+{
+  "name": "prospect-dashboard",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node prospect-server.js",
+    "dev": "node --watch prospect-server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
