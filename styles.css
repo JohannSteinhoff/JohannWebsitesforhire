@@ -1974,7 +1974,7 @@ input:focus, textarea:focus {
   text-transform: uppercase;
   padding: 5px 14px;
   border-radius: 100px;
-  margin-bottom: 16px;
+  margin: -8px 0 18px;
 }
 
 .tier-card__top {
