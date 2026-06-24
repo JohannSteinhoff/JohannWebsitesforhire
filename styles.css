@@ -583,10 +583,24 @@ h3 {
 }
 
 .nav__cta {
-  padding: 9px 20px !important;
+  padding: 0 20px !important;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
   font-size: 0.875rem !important;
   color: #07130a;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+/* When "Let's Talk" is the active section, the sliding bubble becomes its
+   fill — drop the button's own glass chrome so the two don't stack into a
+   halo, and stop the hover lift so it sits flush on the pill. */
+.nav__cta.is-active,
+.nav__cta.is-active:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
 }
 
 [data-theme="light"] .nav__logo,
@@ -598,6 +612,109 @@ h3 {
 [data-theme="light"] .nav__links li > a:not(.btn) {
   color: rgba(7, 19, 10, 0.68);
   text-shadow: none;
+}
+
+/* =============================================
+   SECTION RAIL — right-side glass dots that
+   morph from a ball into a diamond when active
+   ============================================= */
+.section-rail {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.rail-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rail-dot__visual {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition:
+    transform 0.5s var(--ease),
+    border-radius 0.5s var(--ease),
+    background 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    box-shadow 0.4s var(--ease);
+}
+
+.rail-dot:hover .rail-dot__visual {
+  transform: scale(1.3);
+  background: rgba(255, 255, 255, 0.34);
+}
+
+/* ball → diamond */
+.rail-dot.is-active .rail-dot__visual {
+  border-radius: 2px;
+  transform: rotate(45deg) scale(1.18);
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 4px rgba(52, 168, 110, 0.16),
+    0 0 14px rgba(52, 168, 110, 0.55);
+}
+
+[data-theme="light"] .rail-dot__visual {
+  background: rgba(7, 19, 10, 0.10);
+  border-color: rgba(7, 19, 10, 0.28);
+  box-shadow: none;
+}
+[data-theme="light"] .rail-dot:hover .rail-dot__visual {
+  background: rgba(7, 19, 10, 0.20);
+}
+[data-theme="light"] .rail-dot.is-active .rail-dot__visual {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.rail-dot__label {
+  position: absolute;
+  right: 26px;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap;
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 13px;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.rail-dot:hover .rail-dot__label,
+.rail-dot:focus-visible .rail-dot__label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+@media (max-width: 900px) {
+  .section-rail { display: none; }
 }
 
 /* Theme toggle */

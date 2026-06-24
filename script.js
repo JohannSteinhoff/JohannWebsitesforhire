@@ -411,6 +411,79 @@
   }
 
   /* =============================================
+     6b. SECTION RAIL — right-side glass dots
+     ============================================= */
+  (function buildSectionRail() {
+    const railSections = [
+      { id: 'hero',     label: 'Home' },
+      { id: 'tiers',    label: 'Site Types' },
+      { id: 'about',    label: 'About' },
+      { id: 'services', label: 'Services' },
+      { id: 'pricing',  label: 'Pricing' },
+      { id: 'work',     label: 'Demos' },
+      { id: 'contact',  label: 'Contact' },
+    ].filter((s) => document.getElementById(s.id));
+
+    if (railSections.length < 2) return;
+
+    const rail = document.createElement('nav');
+    rail.className = 'section-rail';
+    rail.setAttribute('aria-label', 'Page sections');
+
+    const dots = railSections.map((s) => {
+      const dot = document.createElement('a');
+      dot.className = 'rail-dot';
+      dot.href = '#' + s.id;
+      dot.setAttribute('aria-label', s.label);
+      dot.innerHTML =
+        '<span class="rail-dot__visual"></span>' +
+        '<span class="rail-dot__label">' + s.label + '</span>';
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById(s.id);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      rail.appendChild(dot);
+      return dot;
+    });
+
+    document.body.appendChild(rail);
+
+    let activeIdx = -1;
+    let railTicking = false;
+
+    function updateRail() {
+      const marker = window.scrollY + window.innerHeight * 0.4;
+      let idx = 0;
+      railSections.forEach((s, i) => {
+        const el = document.getElementById(s.id);
+        if (el && marker >= el.offsetTop) idx = i;
+      });
+
+      if (idx !== activeIdx) {
+        if (dots[activeIdx]) {
+          dots[activeIdx].classList.remove('is-active');
+          dots[activeIdx].removeAttribute('aria-current');
+        }
+        dots[idx].classList.add('is-active');
+        dots[idx].setAttribute('aria-current', 'true');
+        activeIdx = idx;
+      }
+      railTicking = false;
+    }
+
+    function requestRailUpdate() {
+      if (railTicking) return;
+      railTicking = true;
+      requestAnimationFrame(updateRail);
+    }
+
+    window.addEventListener('scroll', requestRailUpdate, { passive: true });
+    window.addEventListener('resize', requestRailUpdate);
+    requestRailUpdate();
+  })();
+
+  /* =============================================
      7. MOBILE HAMBURGER
      ============================================= */
   const hamburger  = document.getElementById('hamburger');
