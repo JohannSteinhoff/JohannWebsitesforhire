@@ -2153,7 +2153,7 @@ input:focus, textarea:focus {
 
 .pricing__vs-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 
@@ -2196,6 +2196,20 @@ input:focus, textarea:focus {
 
 [data-theme="light"] .pricing__vs-item--mine {
   background: rgba(26, 128, 80, 0.04);
+}
+
+.pricing__vs-future {
+  text-align: center;
+  max-width: 680px;
+  margin: 22px auto 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.pricing__vs-future strong { color: var(--accent); font-weight: 600; }
+
+@media (max-width: 980px) {
+  .pricing__vs-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 760px) {
