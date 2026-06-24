@@ -2135,6 +2135,49 @@ input:focus, textarea:focus {
   gap: 6px;
 }
 
+.pricing__addon {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 680px;
+  margin: 28px auto 0;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(52, 168, 110, 0.10), rgba(176, 125, 69, 0.08));
+  border: 1px solid rgba(52, 168, 110, 0.26);
+  border-radius: var(--radius-sm);
+}
+
+.pricing__addon-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: var(--accent);
+  background: rgba(52, 168, 110, 0.12);
+  border: 1px solid rgba(52, 168, 110, 0.30);
+}
+.pricing__addon-icon svg { width: 24px; height: 24px; }
+
+.pricing__addon-tag {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.pricing__addon-text p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.pricing__addon-text strong { color: var(--text); font-weight: 600; }
+
 .pricing__vs {
   margin-top: 52px;
   padding-top: 40px;
