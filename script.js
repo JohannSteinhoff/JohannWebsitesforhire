@@ -435,8 +435,11 @@
   /* =============================================
      8. CONTACT FORM
      ============================================= */
-  // Sign up free at formspree.io → New Form → paste your form ID below.
-  const FORMSPREE_ID = 'YOUR_FORM_ID';
+  // Submissions are handled by a Google Apps Script Web App running in
+  // Johann's own Google account (see /docs or the README for the script).
+  // Deploy the script as a Web App ("Execute as: me", "Who has access:
+  // Anyone") and paste its /exec URL below.
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzz2nnxRH5BczORc8E_-MuGxWttEigxEa8StWSlGHY3R2N-LFSSs7WTXuUMK4ism4TA/exec';
 
   const form = document.getElementById('contactForm');
   if (form) {
@@ -449,22 +452,20 @@
       btn.disabled = true;
 
       try {
-        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        // Apps Script Web Apps don't return CORS headers, so we POST with
+        // mode:'no-cors'. The data still reaches the script, but the browser
+        // hands back an opaque response we can't read — so a fetch that
+        // resolves without throwing means the request went through.
+        await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
           body: new FormData(form),
-          headers: { Accept: 'application/json' },
+          mode: 'no-cors',
         });
 
-        if (res.ok) {
-          btn.textContent = "Sent! I'll be in touch soon.";
-          btn.classList.add('btn--success');
-          btn.classList.remove('btn--primary');
-          form.reset();
-        } else {
-          btn.textContent = 'Something went wrong — try again.';
-          btn.disabled = false;
-          setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 5000);
-        }
+        btn.textContent = "Sent! I'll be in touch soon.";
+        btn.classList.add('btn--success');
+        btn.classList.remove('btn--primary');
+        form.reset();
       } catch {
         btn.textContent = 'Network error — please try again.';
         btn.disabled = false;

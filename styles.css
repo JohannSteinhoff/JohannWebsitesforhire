@@ -1685,6 +1685,16 @@ h3 {
 
 .contact__form { padding: 40px; }
 
+/* Honeypot — kept in the DOM (so bots fill it) but off-screen and
+   non-interactive for real users. */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 .form-group {
@@ -1800,6 +1810,160 @@ input:focus, textarea:focus {
 /* =============================================
    PRICING
    ============================================= */
+/* =============================================
+   TIERS — three types of website
+   ============================================= */
+.tiers { position: relative; z-index: 1; }
+
+.tiers__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.tier-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 34px 30px;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.tier-card--featured {
+  border-color: rgba(52, 168, 110, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 20px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(52, 168, 110, 0.18);
+  transform: translateY(-8px);
+}
+
+[data-theme="light"] .tier-card--featured {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    0 12px 40px rgba(0, 0, 0, 0.10),
+    0 0 0 1px rgba(26, 128, 80, 0.20);
+}
+
+.tier-card__badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.tier-card__top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.tier-card__num {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(52, 168, 110, 0.12);
+  border: 1px solid rgba(52, 168, 110, 0.30);
+}
+
+.tier-card--featured .tier-card__num {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.tier-card__heading h3 { font-size: 1.12rem; margin-bottom: 3px; }
+
+.tier-card__tagline {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tier-card__desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tier-card__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.tier-card__list li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  padding-left: 22px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.tier-card__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.tier-card__best {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.55;
+  background: rgba(52, 168, 110, 0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  padding: 14px 16px;
+  margin-bottom: 24px;
+}
+
+.tier-card__best span {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+/* push the button to the bottom so cards line up */
+.tier-card .btn { margin-top: auto; }
+
+.tiers__note {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 40px;
+}
+.tiers__note a { color: var(--accent); font-weight: 600; }
+
 .pricing { position: relative; z-index: 1; background: var(--bg2); }
 
 .pricing__grid {
@@ -1843,12 +2007,29 @@ input:focus, textarea:focus {
   margin-bottom: 18px;
 }
 
+.pricing-card__badge--ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(52, 168, 110, 0.40);
+}
+
 .pricing-card__header { margin-bottom: 16px; }
 .pricing-card__header h3 { font-size: 1.1rem; margin-bottom: 12px; }
 
-.pricing-card__price { display: flex; align-items: baseline; gap: 6px; }
+.pricing-card__price { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 
 .price__from { font-size: 0.8rem; color: var(--muted); }
+
+.pricing-card__monthly { font-size: 0.86rem; color: var(--muted); }
+.pricing-card__monthly strong { color: var(--text); font-weight: 700; }
+
+.pricing-card__fineprint {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: -6px 0 24px;
+  opacity: 0.85;
+}
 
 .price__num {
   font-family: var(--font-serif);
@@ -1856,6 +2037,7 @@ input:focus, textarea:focus {
   font-weight: 700;
   color: var(--text);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .pricing-card--featured .price__num { color: var(--accent); }
@@ -2042,6 +2224,8 @@ input:focus, textarea:focus {
   .services__grid { grid-template-columns: 1fr 1fr; }
   .pricing__grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
   .pricing-card--featured { transform: none; }
+  .tiers__grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .tier-card--featured { transform: none; }
   .work__grid   { grid-template-columns: 1fr 1fr; }
   .contact__grid { grid-template-columns: 1fr; gap: 44px; }
   .cta-banner__card { flex-direction: column; text-align: center; padding: 40px 32px; }
